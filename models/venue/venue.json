@@ -1,0 +1,31 @@
+
+// VenueModel
+
+var mongoose = require('mongoose');
+var ObjectId = mongoose.Schema.Types.ObjectId;
+
+module.exports = {
+    site: {type: ObjectId, ref: 'Site'},
+    name: {type: String, required: true},
+    shortName: {type: String, required: true},
+    address: {
+        street: {type: String, required: true},
+        suite: {type: String},
+        city: {type: String, required: true},
+        state: {type: String, required: true},
+        zip: {type: Number, required: true}
+    },
+    sections: [{type: ObjectId, ref: 'Section'}],
+    phone: {type: Number},
+    email: {type: String, required: true},
+    geo: {
+        lat: {type: Number},
+        lng: {type: Number}
+    },
+    brand: {type: String},
+    virtuals: {
+        slug: function(){
+            return StringUtil.slugify(this.shortName);
+        }
+    }
+}

@@ -1,0 +1,64 @@
+var express = require('express');
+var router = express.Router();
+var path = require('path');
+
+var config = require(path.join(__root,'config'));
+
+// BLOG ROUTER
+
+module.exports = function(passport){
+
+	router.use(config.router);
+	router.get('/posts',function(req,res){
+    	BlogService.getPosts(function(err,posts){
+			return res.format({
+				html: function(){
+					res.render('blog/list',{
+			            posts: posts
+			        });
+				},
+				json: function(){
+					res.send(posts);
+				}
+			});
+	        
+    	});
+    });
+    router.get('/:post/:slug',function(req,res){
+    	BlogService.getPost(req.params.post,function(err,post){
+    		if(!post.slug) post.slug = req.params.slug;
+			return res.format({
+				html: function(){
+					res.render('post/details',{
+			            title:post.name,
+			            post:post
+			        });
+				},
+				json: function(){
+					res.send(post);
+				}
+			});
+	        
+    	});
+    });
+    router.get('/:post',function(req,res){
+    	BlogService.getPost(req.params.post,function(err,post){
+    		if(!post.slug) post.slug = StringUtil.slugify(post.name);
+			return res.format({
+				html: function(){
+					res.render('post/details',{
+			            title:post.name,
+			            post:post
+			        });
+				},
+				json: function(){
+					res.send(post);
+				}
+			});
+	        
+    	});
+    });
+    
+    return router;
+};
+

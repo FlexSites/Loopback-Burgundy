@@ -1,0 +1,77 @@
+{
+  "name": "Site",
+  "plural": "sites",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "string",
+      "required": true
+    },
+    "repo": {
+      "type": "string",
+      "required": true
+    },
+    "host": {
+      "type": "string",
+      "required": true
+    },
+    "abbr": {
+      "type": "string",
+      "required": true
+    },
+    "analytics": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "styles": {
+      "type": [
+        "string"
+      ]
+    },
+    "scripts": {
+      "type": [
+        "string"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "keywords": {
+      "type": "string",
+      "required": true
+    },
+    "website": {
+      "type": "string"
+    },
+    "redirects": {
+      "type": [
+        "string"
+      ]
+    },
+    "contact": {
+      "email": {
+        "type": "string"
+      },
+      "phone": {
+        "type": "string"
+      }
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

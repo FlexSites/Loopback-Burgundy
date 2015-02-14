@@ -1,0 +1,13 @@
+
+// VenueModel
+
+var mongoose = require('mongoose');
+var ObjectId = mongoose.Schema.Types.ObjectId;
+
+module.exports = {
+	site: {type: ObjectId, ref: 'Site'},
+	venue: {type: ObjectId, ref: 'Venue'},
+    name: {type: String, required: true},
+    color: {type: String},
+    virtuals: {}
+}

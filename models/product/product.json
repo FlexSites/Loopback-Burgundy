@@ -1,0 +1,84 @@
+
+// EventModel
+
+var mongoose = require('mongoose');
+var ObjectId = mongoose.Schema.Types.ObjectId;
+var path = require('path');
+
+var DbUtil = require('../../utilities/DatabaseUtility.js');
+var dateFormat = require('dateformat');
+
+module.exports = {
+    _name: {type: String},
+    entertainer: {type: ObjectId, ref: 'Entertainer'},
+    showtimes: [DbUtil.createSchema('Showtime',__dirname)],
+    isRecurring: {type: Boolean, default: false},
+    _type: {type: String, default: 'general'},
+    price: {type: Number, default: 0},
+    venue: {type: ObjectId, required: true, ref: 'Venue'},
+    _description: {type: String},
+    _facebook: {type: String},
+    link: {type: String},
+    _video: {type: String},
+    _heroes: [DbUtil.createSchema('Hero',path.join(__root,'api','medium'))],
+    population: 'entertainer venue',
+    virtuals: {
+        name: function(){
+            return this._name||this.entertainer&&this.entertainer.name;
+        },
+        slug: function(){
+            return StringUtil.slugify(this._name||this.entertainer&&this.entertainer.name);
+        },
+        snippet: function(){
+            return StringUtil.truncate(this.entertainer ? this.entertainer.credits || this.entertainer.description : this._description,100);
+        },
+        type: function(){
+            var typeMap = {
+                'general': 'General Admission',
+                'special': 'Special Event'
+            };
+            return typeMap[this._type];
+        },
+        credits: function(){
+            return this.entertainer&&this.entertainer.credits;
+        },
+        description: function(){
+            return this._description||this.entertainer&&this.entertainer.description;
+        },
+        hero: function(){
+            var heroes = this._hero||this.entertainer&&this.entertainer.hero||[{}];
+            return heroes[0];
+        },
+        start: function(){
+            var srtd = _.sortBy(this.showtimes,'datetime');
+            if(srtd.length){
+                return dateFormat(srtd[0].datetime, 'm/d');
+            }
+        },
+        end: function(){
+            var srtd = _.sortBy(this.showtimes,'datetime');
+            if(srtd.length){
+                return dateFormat(srtd[srtd.length-1].datetime, 'm/d');
+            }
+        },
+        endDate: function(){
+            var srtd = _.sortBy(this.showtimes,'datetime');
+            if(srtd.length){
+                return srtd[srtd.length-1].datetime;
+            }
+        },
+        range: function(){
+            var list = _.sortBy(this.showtimes,'datetime');
+            if(list.length){
+                return DateUtil.formatDateRange(list[0].datetime,list[list.length-1].datetime);
+            }
+        },
+        image: function(){
+            var dir = this.entertainer&&this.entertainer.name?'/media/entertainer':'/media/event/';
+            return {
+                thumb: path.join(dir,StringUtil.slugify(this._name||this.entertainer&&this.entertainer.name),'thumb.jpg'),
+                profile: path.join(dir,StringUtil.slugify(this._name||this.entertainer&&this.entertainer.name),'profile.jpg')
+            }
+        }
+    }
+}
