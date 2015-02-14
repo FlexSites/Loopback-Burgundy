@@ -1,0 +1,26 @@
+{
+  "name": "Medium",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "type": {
+      "type": "string",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "src": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

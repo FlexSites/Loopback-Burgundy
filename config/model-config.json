@@ -1,0 +1,47 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../models/event",
+      "../models/entertainer",
+      "../models/medium",
+      "./models"
+    ]
+  },
+  "User": {
+    "dataSource": "db"
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Event": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Entertainer": {
+    "dataSource": "db",
+    "public": true
+  },
+  "EntertainerMedium": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Medium": {
+    "dataSource": "db",
+    "public": false
+  }
+}

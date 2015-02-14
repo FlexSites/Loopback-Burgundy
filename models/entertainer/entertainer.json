@@ -1,0 +1,38 @@
+{
+  "name": "Entertainer",
+  "plural": "entertainers",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "credits": {
+      "type": [
+        "string"
+      ],
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "facebook": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "media": {
+      "type": "hasMany",
+      "model": "Medium",
+      "foreignKey": "entertainerId"
+    }
+  },
+  "acls": [],
+  "methods": []
+}
