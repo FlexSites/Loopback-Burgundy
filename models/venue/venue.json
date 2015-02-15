@@ -1,25 +1,36 @@
 {
-    "name": {"type": "String", "required": true},
-    "shortName": {"type": "String", "required": true},
-    "address": {
-        "street": {"type": "String", "required": true},
-        "suite": {"type": "String"},
-        "city": {"type": "String", "required": true},
-        "state": {"type": "String", "required": true},
-        "zip": {"type": "Number", "required": true}
+    "name": "Venue",
+    "plural": "venues",
+    "base": "PersistedModel",
+    "idInjection": true,
+    "properties": {
+        "name": {"type": "String", "required": true},
+        "shortName": {"type": "String", "required": true},
+        "address": {
+            "street": {"type": "String", "required": true},
+            "suite": {"type": "String"},
+            "city": {"type": "String", "required": true},
+            "state": {"type": "String", "required": true},
+            "zip": {"type": "Number", "required": true}
+        },
+        "phone": {"type": "Number"},
+        "email": {"type": "String", "required": true},
+        "geo": {
+            "type": "geopoint"
+        },
+        "brand": {"type": "String"}
     },
-    "phone": {"type": "Number"},
-    "email": {"type": "String", "required": true},
-    "geo": {
-        "type": "geopoint"
-    },
-    "brand": {"type": "String"},
     "validations": [],
     "relations": {
         "sections": {
           "type": "hasMany",
           "model": "Section",
           "foreignKey": "venueId"
+        },
+        "site": {
+          "type": "belongsTo",
+          "model": "Site",
+          "foreignKey": "siteId"
         }
     },
     "acls": [],
