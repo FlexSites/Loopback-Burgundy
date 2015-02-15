@@ -6,6 +6,8 @@
       "../models/event",
       "../models/entertainer",
       "../models/medium",
+      "../models/site",
+      "../models/page",
       "./models"
     ]
   },
@@ -29,19 +31,27 @@
     "public": false
   },
   "Event": {
-    "dataSource": "db",
+    "dataSource": "mongo",
     "public": true
   },
   "Entertainer": {
-    "dataSource": "db",
+    "dataSource": "mongo",
+    "public": true
+  },
+  "Site": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "Page": {
+    "dataSource": "mongo",
     "public": true
   },
   "EntertainerMedium": {
-    "dataSource": "db",
+    "dataSource": "mongo",
     "public": false
   },
   "Medium": {
-    "dataSource": "db",
+    "dataSource": "mongo",
     "public": false
   }
 }
