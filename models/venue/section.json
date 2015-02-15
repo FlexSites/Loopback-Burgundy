@@ -3,12 +3,17 @@
     "base": "PersistedModel",
     "idInjection": true,
     "properties": {
-		"venueId": {"type": "string", "required": true},
 	    "name": {"type": "string", "required": true},
 	    "color": {"type": "string"}
     },
     "validations": [],
-    "relations": {},
+    "relations": {
+        "venue": {
+          "type": "belongsTo",
+          "model": "Venue",
+          "foreignKey": "venueId"
+        }
+	},
     "acls": [],
     "methods": []
 }

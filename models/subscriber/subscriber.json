@@ -24,7 +24,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+        "site": {
+          "type": "belongsTo",
+          "model": "Site",
+          "foreignKey": "siteId"
+        }
+    },
   "acls": [],
   "methods": []
 }
