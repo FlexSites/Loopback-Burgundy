@@ -66,11 +66,11 @@
     "public": true
   },
   "Subscriber": {
-    "datasource": "mongo",
+    "dataSource": "mongo",
     "public": false
   },
   "Order": {
-    "datasource": "mongo",
+    "dataSource": "mongo",
     "public": false
   }
 }
