@@ -29,7 +29,7 @@
   "relations": {
     "media": {
       "type": "hasMany",
-      "model": "Medium",
+      "model": "EntertainerMedium",
       "foreignKey": "entertainerId"
     }
   },
