@@ -1,26 +1,38 @@
-
-// Order Model
-
-var mongoose = require('mongoose');
-var ObjectId = mongoose.Schema.Types.ObjectId;
-var path = require('path');
-
-var DbUtil = require('../../utilities/DatabaseUtility.js');
-
-module.exports = {
-    site: {type: ObjectId, ref: 'Site'},
-    transactionId: {type: String},
-    firstName: {type: String, required: true},
-    lastName: {type: String, required: true},
-    phone: {type: String, required: true},
-    email: {type: String, required: true},
-    customerProducts: [DbUtil.createSchema('CustomerProduct',path.join(__root,'api','product'))],
-    virtuals: {
-        total: function(){
-            return 0.0;
-        },
-        subTotal: function(){
-            return 0.0;
-        }
+{
+  "name": "Order",
+  "plural": "orders",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "site": {
+      "type": "objectId",
+      "ref": "Site"
+    },
+    "transactionId": {"type": "string"},
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string",
+      "required": true
+    },
+    "phone": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "string",
+      "required": true
     }
+  },
+  "validations": [],
+  "relations": {
+    "customerProducts": {
+      "type": "hasMany",
+      "model": "CustomerProduct"
+    }
+  },
+  "acls": [],
+  "methods": []
 }

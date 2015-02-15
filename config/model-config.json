@@ -9,6 +9,8 @@
       "../models/site",
       "../models/page",
       "../models/venue",
+      "../models/subscriber",
+      "../models/order",
       "./models"
     ]
   },
@@ -58,5 +60,13 @@
   "Venue": {
     "dataSource": "mongo",
     "public": true
+  },
+  "Subscriber": {
+    "datasource": "mongo",
+    "public": false
+  },
+  "Order": {
+    "datasource": "mongo",
+    "public": false
   }
 }
