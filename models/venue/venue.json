@@ -1,31 +1,27 @@
-
-// VenueModel
-
-var mongoose = require('mongoose');
-var ObjectId = mongoose.Schema.Types.ObjectId;
-
-module.exports = {
-    site: {type: ObjectId, ref: 'Site'},
-    name: {type: String, required: true},
-    shortName: {type: String, required: true},
-    address: {
-        street: {type: String, required: true},
-        suite: {type: String},
-        city: {type: String, required: true},
-        state: {type: String, required: true},
-        zip: {type: Number, required: true}
+{
+    "name": {"type": "String", "required": true},
+    "shortName": {"type": "String", "required": true},
+    "address": {
+        "street": {"type": "String", "required": true},
+        "suite": {"type": "String"},
+        "city": {"type": "String", "required": true},
+        "state": {"type": "String", "required": true},
+        "zip": {"type": "Number", "required": true}
     },
-    sections: [{type: ObjectId, ref: 'Section'}],
-    phone: {type: Number},
-    email: {type: String, required: true},
-    geo: {
-        lat: {type: Number},
-        lng: {type: Number}
+    "phone": {"type": "Number"},
+    "email": {"type": "String", "required": true},
+    "geo": {
+        "type": "geopoint"
     },
-    brand: {type: String},
-    virtuals: {
-        slug: function(){
-            return StringUtil.slugify(this.shortName);
+    "brand": {"type": "String"},
+    "validations": [],
+    "relations": {
+        "sections": {
+          "type": "hasMany",
+          "model": "Section",
+          "foreignKey": "venueId"
         }
-    }
+    },
+    "acls": [],
+    "methods": []
 }

@@ -8,6 +8,7 @@
       "../models/medium",
       "../models/site",
       "../models/page",
+      "../models/venue",
       "./models"
     ]
   },
@@ -53,5 +54,9 @@
   "Medium": {
     "dataSource": "mongo",
     "public": false
+  },
+  "Venue": {
+    "dataSource": "mongo",
+    "public": true
   }
 }
