@@ -27,6 +27,11 @@
           "model": "Section",
           "foreignKey": "venueId"
         },
+        "events": {
+          "type": "hasMany",
+          "model": "Event",
+          "foreignKey": "venueId"
+        },
         "site": {
           "type": "belongsTo",
           "model": "Site",

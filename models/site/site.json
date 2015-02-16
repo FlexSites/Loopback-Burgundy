@@ -71,7 +71,23 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "venues": {
+      "type": "hasMany",
+      "model": "Venue",
+      "foreignKey": "site"
+    },
+    "events": {
+      "type": "hasMany",
+      "model": "Event",
+      "foreignKey": "siteId"
+    },
+    "pages": {
+      "type": "hasMany",
+      "model": "Page",
+      "foreignKey": "site"
+    }
+  },
   "acls": [],
   "methods": []
 }
