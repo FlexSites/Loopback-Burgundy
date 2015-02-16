@@ -1,0 +1,11 @@
+{
+    "name": "user",
+    "plural": "users",
+    "base": "User",
+    "relations": {
+      "sites": {
+        "type": "hasAndBelongsToMany",
+        "model": "Site"
+      }
+    }
+}

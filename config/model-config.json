@@ -1,8 +1,6 @@
 {
   "_meta": {
     "sources": [
-      "loopback/common/models",
-      "loopback/server/models",
       "../models/event",
       "../models/entertainer",
       "../models/medium",
@@ -12,26 +10,31 @@
       "../models/subscriber",
       "../models/order",
       "../models/ticket",
-      "./models"
+      "../models/user"
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "mongo",
+    "public": false
+  },
+  "user": {
+    "dataSource": "mongo",
+    "public": true
   },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "mongo",
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "mongo",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "mongo",
     "public": false
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "mongo",
     "public": false
   },
   "Event": {
