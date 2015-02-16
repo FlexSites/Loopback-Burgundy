@@ -8,7 +8,7 @@
       "type": "string",
       "required": true
     },
-    "seatNumber": {
+    "number": {
       "type": "string",
       "required": true
     }

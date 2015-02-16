@@ -41,6 +41,10 @@
     "dataSource": "mongo",
     "public": true
   },
+  "Showtime": {
+    "dataSource": "mongo",
+    "public": true
+  },
   "Entertainer": {
     "dataSource": "mongo",
     "public": true

@@ -5,12 +5,66 @@
   "idInjection": true,
   "properties": {
     "name": {
+      "type": "string"
+    },
+    "type": {
       "type": "string",
-      "required": true
-    }
+      "default": "general"
+    },
+    "enabled": {
+      "type": "date"
+    },
+    "dayofshow": {
+      "type": "number",
+      "default": 0
+    },
+    "description": {
+      "type": "string"
+    },
+    "facebook": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "video": {
+      "type": "string"
+    },
+    "pricingTiers": [
+      {
+        "date": {
+          "type": "date"
+        },
+        "section": {
+          "type": "objectId",
+          "ref": "Section"
+        },
+        "price": {
+          "type": "number",
+          "required": true
+        }
+      }
+    ]
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "site": {
+      "type": "belongsTo",
+      "model": "Site"
+    },
+    "entertainer": {
+      "type": "hasMany",
+      "model": "Entertainer"
+    },
+    "showtime": {
+      "type": "hasMany",
+      "model": "Showtime"
+    },
+    "venue": {
+      "type": "belongsTo",
+      "model": "Venue"
+    }
+  },
   "acls": [],
   "methods": []
 }

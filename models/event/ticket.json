@@ -9,8 +9,7 @@
       "required": true
     },
     "type": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "price": {
       "type": "number"
@@ -21,6 +20,14 @@
     "seat": {
       "type": "belongsTo",
       "model": "Seat"
+    },
+    "event": {
+      "type": "belongsTo",
+      "model": "Event"
+    },
+    "showtime": {
+      "type": "belongsTo",
+      "model": "Showtime"
     }
   },
   "acls": [],
