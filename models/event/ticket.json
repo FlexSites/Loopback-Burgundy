@@ -21,10 +21,6 @@
       "type": "belongsTo",
       "model": "Seat"
     },
-    "event": {
-      "type": "belongsTo",
-      "model": "Event"
-    },
     "showtime": {
       "type": "belongsTo",
       "model": "Showtime"

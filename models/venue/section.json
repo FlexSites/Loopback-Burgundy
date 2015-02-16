@@ -16,6 +16,10 @@
       "type": "belongsTo",
       "model": "Venue",
       "foreignKey": "venueId"
+    },
+    "seat":{
+      "type":"hasMany",
+      "model":"Seat"
     }
   },
   "acls": [],

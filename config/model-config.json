@@ -83,7 +83,7 @@
   },
   "Ticket": {
     "dataSource": "mongo",
-    "public": false
+    "public": true
   },
   "Seat": {
     "dataSource": "mongo",
