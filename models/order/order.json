@@ -28,9 +28,9 @@
   },
   "validations": [],
   "relations": {
-    "customerProducts": {
+    "ticket": {
       "type": "hasMany",
-      "model": "CustomerProduct"
+      "model": "Ticket"
     }
   },
   "acls": [],

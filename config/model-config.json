@@ -11,6 +11,7 @@
       "../models/venue",
       "../models/subscriber",
       "../models/order",
+      "../models/ticket",
       "./models"
     ]
   },
@@ -72,5 +73,13 @@
   "Order": {
     "dataSource": "mongo",
     "public": false
+  },
+  "Ticket": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "Seat": {
+    "dataSource": "mongo",
+    "public": true
   }
 }

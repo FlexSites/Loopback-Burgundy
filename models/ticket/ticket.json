@@ -1,21 +1,26 @@
 {
-  "name": "Section",
-  "plural": "sections",
+  "name": "Ticket",
+  "plural": "tickets",
   "base": "PersistedModel",
   "idInjection": true,
   "properties": {
-    "name": {
+    "status": {
       "type": "string",
       "required": true
     },
-    "color": {"type": "string"}
+    "type": {
+      "type": "string",
+      "required": true
+    },
+    "price": {
+      "type": "number"
+    }
   },
   "validations": [],
   "relations": {
-    "venue": {
+    "seat": {
       "type": "belongsTo",
-      "model": "Venue",
-      "foreignKey": "venueId"
+      "model": "Seat"
     }
   },
   "acls": [],
