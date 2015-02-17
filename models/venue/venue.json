@@ -1,7 +1,7 @@
 {
     "name": "Venue",
     "plural": "venues",
-    "base": "PersistedModel",
+    "base": "SiteModel",
     "idInjection": true,
     "properties": {
         "name": {"type": "String", "required": true},
@@ -31,13 +31,24 @@
           "type": "hasMany",
           "model": "Event",
           "foreignKey": "venueId"
-        },
-        "site": {
-          "type": "belongsTo",
-          "model": "Site",
-          "foreignKey": "siteId"
         }
     },
-    "acls": [],
+    "acls": [{
+        "model": "*",
+        "property": "*",
+        "accessType": "*",
+        "principalType": "ROLE",
+        "principalId": "$everyone",
+        "permission": "DENY"
+      },
+      {
+      "model": "*",
+      "property": "*",
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }],
+
     "methods": []
 }

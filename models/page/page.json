@@ -1,7 +1,7 @@
 {
   "name": "Page",
   "plural": "pages",
-  "base": "PersistedModel",
+  "base": "SiteModel",
   "idInjection": true,
   "properties": {
     "isSearchable": {

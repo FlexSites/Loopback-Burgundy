@@ -9,17 +9,11 @@
       "../models/venue",
       "../models/subscriber",
       "../models/order",
-      "../models/ticket",
-      "../models/user"
+      "../models/ticket"
     ]
   },
   "User": {
-    "dataSource": "mongo",
-    "public": false
-  },
-  "user": {
-    "dataSource": "mongo",
-    "public": true
+    "dataSource": "mongo"
   },
   "AccessToken": {
     "dataSource": "mongo",
