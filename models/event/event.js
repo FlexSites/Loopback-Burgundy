@@ -7,7 +7,7 @@ module.exports = function (Event) {
       }
     }
     else {
-      if (context.data.date) {
+      if (!context.data.date) {
         context.data.date = new Date(Date.now());
       }
     }
