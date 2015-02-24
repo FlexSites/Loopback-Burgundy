@@ -63,6 +63,10 @@
     "venue": {
       "type": "belongsTo",
       "model": "Venue"
+    },
+    "medium":{
+      "type": "hasMany",
+      "model": "Medium"
     }
   },
   "acls": [],
