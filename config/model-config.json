@@ -35,6 +35,10 @@
     "dataSource": "mongo",
     "public": true
   },
+  "EventMedium": {
+    "dataSource": "mongo",
+    "public": false
+  },
   "Showtime": {
     "dataSource": "mongo",
     "public": true
