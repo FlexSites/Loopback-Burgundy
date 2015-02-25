@@ -1,7 +1,7 @@
 {
   "name": "Site",
   "plural": "sites",
-  "base": "PersistedModel",
+  "base": "OmniModel",
   "idInjection": true,
   "properties": {
     "name": {

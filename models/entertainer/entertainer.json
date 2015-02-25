@@ -1,7 +1,7 @@
 {
   "name": "Entertainer",
   "plural": "entertainers",
-  "base": "PersistedModel",
+  "base": "OmniModel",
   "idInjection": true,
   "properties": {
     "name": {

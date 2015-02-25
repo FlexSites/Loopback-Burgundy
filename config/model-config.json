@@ -2,6 +2,7 @@
   "_meta": {
     "sources": [
       "../models/event",
+      "../models/omniModel",
       "../models/entertainer",
       "../models/medium",
       "../models/site",
@@ -14,6 +15,10 @@
   },
   "User": {
     "dataSource": "mongo"
+  },
+  "OmniModel": {
+    "dataSource": "mongo",
+    "public":false
   },
   "AccessToken": {
     "dataSource": "mongo",

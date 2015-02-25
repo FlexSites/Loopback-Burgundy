@@ -1,6 +1,6 @@
 {
   "name": "Medium",
-  "base": "PersistedModel",
+  "base": "OmniModel",
   "idInjection": true,
   "properties": {
     "type": {

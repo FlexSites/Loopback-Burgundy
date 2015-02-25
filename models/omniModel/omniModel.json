@@ -1,38 +1,10 @@
 {
-  "name": "Order",
-  "plural": "orders",
+  "name": "OmniModel",
   "base": "PersistedModel",
   "idInjection": true,
-  "properties": {
-    "site": {
-      "type": "objectId",
-      "ref": "Site"
-    },
-    "transactionId": {"type": "string"},
-    "firstName": {
-      "type": "string",
-      "required": true
-    },
-    "lastName": {
-      "type": "string",
-      "required": true
-    },
-    "phone": {
-      "type": "string",
-      "required": true
-    },
-    "email": {
-      "type": "string",
-      "required": true
-    }
-  },
+  "properties": {},
   "validations": [],
-  "relations": {
-    "ticket": {
-      "type": "hasMany",
-      "model": "Ticket"
-    }
-  },
+  "relations": {},
   "acls": [
     {
       "model": "*",
@@ -46,6 +18,14 @@
       "model": "*",
       "property": "*",
       "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "model": "*",
+      "property": "*",
+      "accessType": "READ",
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "ALLOW"

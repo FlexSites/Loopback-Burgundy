@@ -1,7 +1,7 @@
 {
   "name": "Showtime",
   "plural": "showtimes",
-  "base": "PersistedModel",
+  "base": "OmniModel",
   "idInjection": true,
   "properties": {
     "date": {

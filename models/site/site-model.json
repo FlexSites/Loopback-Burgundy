@@ -1,6 +1,6 @@
 {
   "name": "SiteModel",
-  "base": "PersistedModel",
+  "base": "OmniModel",
   "idInjection": true,
   "properties": {
   },

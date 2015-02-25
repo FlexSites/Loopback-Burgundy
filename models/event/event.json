@@ -1,7 +1,7 @@
 {
   "name": "Event",
   "plural": "events",
-  "base": "PersistedModel",
+  "base": "OmniModel",
   "idInjection": true,
   "properties": {
     "name": {
@@ -69,31 +69,6 @@
       "model": "Medium"
     }
   },
-  "acls": [
-    {
-      "model": "*",
-      "property": "*",
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "DENY"
-    },
-    {
-      "model": "*",
-      "property": "*",
-      "accessType": "READ",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "ALLOW"
-    },
-    {
-      "model": "*",
-      "property": "*",
-      "accessType": "WRITE",
-      "principalType": "ROLE",
-      "principalId": "$authenticated",
-      "permission": "ALLOW"
-    }
-  ],
+  "acls": [],
   "methods": []
 }
