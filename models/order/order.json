@@ -1,7 +1,7 @@
 {
   "name": "Order",
   "plural": "orders",
-  "base": "PersistedModel",
+  "base": "OmniModel",
   "idInjection": true,
   "properties": {
     "site": {
@@ -35,20 +35,20 @@
   },
   "acls": [
     {
-      "model": "*",
-      "property": "*",
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "DENY"
-    },
-    {
-      "model": "*",
+      "model": "order",
       "property": "*",
       "accessType": "WRITE",
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "ALLOW"
+    },
+    {
+      "model": "order",
+      "property": "*",
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
     },
     {
       "model": "*",
