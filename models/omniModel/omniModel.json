@@ -7,33 +7,23 @@
   "relations": {},
   "acls": [
     {
-      "model": "*",
-      "property": "*",
-      "accessType": "*",
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "DENY"
     },
     {
-      "model": "*",
-      "property": "*",
       "accessType": "WRITE",
       "principalType": "ROLE",
       "principalId": "$authenticated",
       "permission": "ALLOW"
     },
     {
-      "model": "*",
-      "property": "*",
       "accessType": "READ",
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "ALLOW"
     },
     {
-      "model": "*",
-      "property": "*",
-      "accessType": "*",
       "principalType": "ROLE",
       "principalId": "admin",
       "permission": "ALLOW"

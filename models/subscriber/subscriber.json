@@ -34,7 +34,6 @@
   "acls": [
     {
       "model": "subscriber",
-      "property": "*",
       "accessType": "WRITE",
       "principalType": "ROLE",
       "principalId": "$everyone",
@@ -42,19 +41,10 @@
     },
     {
       "model": "order",
-      "property": "*",
       "accessType": "READ",
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "DENY"
-    },
-    {
-      "model": "*",
-      "property": "*",
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "admin",
-      "permission": "ALLOW"
     }
   ],
   "methods": []
