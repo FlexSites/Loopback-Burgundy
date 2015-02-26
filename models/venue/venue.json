@@ -33,22 +33,7 @@
           "foreignKey": "venueId"
         }
     },
-    "acls": [{
-        "model": "*",
-        "property": "*",
-        "accessType": "*",
-        "principalType": "ROLE",
-        "principalId": "$everyone",
-        "permission": "DENY"
-      },
-      {
-      "model": "*",
-      "property": "*",
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "$authenticated",
-      "permission": "ALLOW"
-    }],
+    "acls": [],
 
     "methods": []
 }
