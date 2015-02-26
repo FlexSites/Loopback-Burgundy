@@ -4,7 +4,7 @@
     "connector": "memory"
   },
   "mongo": {
-    "host": "127.0.0.1",
+    "host": "166.78.137.194",
     "port": 27017,
     "database": "omni",
     "name": "mongo",
