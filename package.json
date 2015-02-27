@@ -18,6 +18,7 @@
     "loopback-explorer": "^1.1.0"
   },
   "devDependencies": {
+    "async": "^0.9.0",
     "jshint": "^2.5.6"
   },
   "repository": {

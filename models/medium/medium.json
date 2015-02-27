@@ -1,6 +1,6 @@
 {
   "name": "Medium",
-  "base": "OmniModel",
+  "base": "SiteModel",
   "idInjection": true,
   "properties": {
     "type": {

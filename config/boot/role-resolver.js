@@ -1,42 +1,34 @@
+var async = require('async');
+
 module.exports = function(app) {
-  console.log('role resolver');
-  var Role = app.models.Role;
 
-  Role.registerResolver('teamMember', function(role, context, cb) {
-    function reject() {
-      process.nextTick(function() {
-        cb(null, false);
-      });
+  var Role = app.models.Role
+    , User = app.models.User;
+
+  Role.registerResolver('siteOwner', function(role, context, next) {
+
+    if(context.accessType === 'READ'){
+      return next(null,true);
     }
-
-    // if the target model is not project
-    if (context.modelName !== 'project') {
-      return reject();
-    }
-
-    // do not allow anonymous users
     var userId = context.accessToken.userId;
-    if (!userId) {
-      return reject();
+    if(!userId){
+      return next(null, false);
     }
-
-    // check if userId is in team table for the given project id
-    context.model.findById(context.modelId, function(err, project) {
-      if (err || !project)
-        return reject();
-
-      var Team = app.models.Team;
-      Team.count({
-        ownerId: project.ownerId,
-        memberId: userId
-      }, function(err, count) {
-        if (err) {
-          console.log(err);
-          return cb(null, false);
+    async.parallel({
+        user: function(cb) {
+          User.findById(userId, cb);
+        },
+        obj: function(cb) {
+          context.model.findById(context.modelId, cb);
         }
-
-        cb(null, count > 0); // true = is a team member
+      },
+      function(err, results) {
+        if(results.user || results.obj){
+          results.user.sites.exists(results.obj.siteId, next);
+        }
+        else {
+          next(err,false);
+        }
       });
-    });
   });
 }

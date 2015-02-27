@@ -1,7 +1,7 @@
 {
   "name": "Subscriber",
   "plural": "subscribers",
-  "base": "OmniModel",
+  "base": "SiteModel",
   "idInjection": true,
   "properties": {
     "name": {

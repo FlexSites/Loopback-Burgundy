@@ -1,15 +1,16 @@
+var loopback = require('loopback');
+
 module.exports = function(SiteModel){
-  SiteModel.beforeRemote('**', function(ctx, user, next) {
-      console.log(ctx.methodString, 'was invoked remotely'); // users.prototype.save was invoked remotely
-      next();
-    });
-  SiteModel.beforeRemote('*', function(ctx, user, next) {
-    console.log(ctx.methodString, 'was invoked remotely'); // users.prototype.save was invoked remotely
-    next();
-  });
+
   SiteModel.observe('access', function logQuery(ctx, next) {
-    console.log(ctx.req);
-    console.log('Accessing %s matching %s', ctx.Model.modelName, ctx.query.where);
+    // If there's a siteId in the request, only show related models
+    var site = loopback.getCurrentContext().active.http.req.site;
+    if(site){
+      if(!ctx.query.where){
+        ctx.query.where = {};
+      }
+      ctx.query.where.siteId = site;
+    }
     next();
   });
 }

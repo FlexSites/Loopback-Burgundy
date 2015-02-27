@@ -77,7 +77,7 @@
     "venues": {
       "type": "hasMany",
       "model": "Venue",
-      "foreignKey": "site"
+      "foreignKey": "siteId"
     },
     "events": {
       "type": "hasMany",
@@ -87,7 +87,7 @@
     "pages": {
       "type": "hasMany",
       "model": "Page",
-      "foreignKey": "site"
+      "foreignKey": "siteId"
     }
   },
   "acls": [],
