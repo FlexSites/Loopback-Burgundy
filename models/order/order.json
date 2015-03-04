@@ -1,0 +1,53 @@
+{
+  "name": "Order",
+  "plural": "orders",
+  "base": "SiteModel",
+  "idInjection": true,
+  "properties": {
+    "site": {
+      "type": "objectId",
+      "ref": "Site"
+    },
+    "transactionId": {"type": "string"},
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string",
+      "required": true
+    },
+    "phone": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "ticket": {
+      "type": "hasMany",
+      "model": "Ticket"
+    }
+  },
+  "acls": [
+    {
+      "model": "order",
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "model": "order",
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    }
+  ],
+  "methods": []
+}

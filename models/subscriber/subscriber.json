@@ -1,0 +1,51 @@
+{
+  "name": "Subscriber",
+  "plural": "subscribers",
+  "base": "SiteModel",
+  "idInjection": true,
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "required": true
+    },
+    "zip": {
+      "type": "string"
+    },
+    "site": {
+      "type": "string",
+      "required": true
+    },
+    "status": {
+      "type": "string",
+      "default": "S"
+    }
+  },
+  "validations": [],
+  "relations": {
+        "site": {
+          "type": "belongsTo",
+          "model": "Site",
+          "foreignKey": "siteId"
+        }
+    },
+  "acls": [
+    {
+      "model": "subscriber",
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "model": "order",
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    }
+  ],
+  "methods": []
+}

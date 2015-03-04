@@ -1,0 +1,15 @@
+{
+  "name": "EventMedium",
+  "base": "Medium",
+  "idInjection": true,
+  "properties": {
+    "eventId": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

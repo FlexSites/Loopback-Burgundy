@@ -1,0 +1,27 @@
+{
+  "name": "Section",
+  "plural": "sections",
+  "base": "OmniModel",
+  "idInjection": true,
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "color": {"type": "string"}
+  },
+  "validations": [],
+  "relations": {
+    "venue": {
+      "type": "belongsTo",
+      "model": "Venue",
+      "foreignKey": "venueId"
+    },
+    "seat":{
+      "type":"hasMany",
+      "model":"Seat"
+    }
+  },
+  "acls": [],
+  "methods": []
+}

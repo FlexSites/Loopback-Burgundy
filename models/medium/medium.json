@@ -1,6 +1,6 @@
 {
   "name": "Medium",
-  "base": "PersistedModel",
+  "base": "SiteModel",
   "idInjection": true,
   "properties": {
     "type": {

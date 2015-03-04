@@ -1,0 +1,25 @@
+{
+  "name": "Showtime",
+  "plural": "showtimes",
+  "base": "OmniModel",
+  "idInjection": true,
+  "properties": {
+    "date": {
+      "type": "date",
+      "required":true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "ticket": {
+      "type": "hasMany",
+      "model": "Ticket"
+    },
+    "event": {
+      "type": "belongsTo",
+      "model": "Event"
+    }
+  },
+  "acls": [],
+  "methods": []
+}

@@ -1,0 +1,17 @@
+{
+  "name": "SiteModel",
+  "base": "OmniModel",
+  "idInjection": true,
+  "properties": {
+  },
+  "validations": [],
+  "relations": {
+    "site": {
+      "type": "belongsTo",
+      "model": "Site",
+      "foreignKey": "siteId"
+    }
+  },
+  "acls": [],
+  "methods": []
+}
