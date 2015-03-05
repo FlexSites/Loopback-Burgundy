@@ -4,10 +4,12 @@
     "connector": "memory"
   },
   "mongo": {
-    "host": "166.78.137.194",
-    "port": 27017,
-    "database": "omni",
+    "host": "ds051750.mongolab.com",
+    "port": 51750,
+    "database": "heroku_app34572955",
     "name": "mongo",
-    "connector": "mongodb"
+    "connector": "mongodb",
+    "username": "heroku_app34572955",
+    "password": "ps2t790pfm36f4l97f06vldgc0"
   }
 }
