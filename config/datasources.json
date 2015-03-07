@@ -1,15 +1,7 @@
 {
-  "db": {
-    "name": "db",
-    "connector": "memory"
-  },
   "mongo": {
-    "host": "ds051750.mongolab.com",
-    "port": 51750,
-    "database": "heroku_app34572955",
     "name": "mongo",
     "connector": "mongodb",
-    "username": "heroku_app34572955",
-    "password": "ps2t790pfm36f4l97f06vldgc0"
+    "url": "mongodb://heroku_app34616047:76dbhonrp4rk9qe5uonccl6c6m@ds051831.mongolab.com:51831/heroku_app34616047"
   }
 }
