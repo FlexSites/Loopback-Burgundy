@@ -6,8 +6,10 @@
     "pretest": "jshint ."
   },
   "dependencies": {
+    "async": "^0.9.0",
     "compression": "^1.0.3",
     "errorhandler": "^1.1.1",
+    "http-proxy": "^1.8.1",
     "loopback": "^2.8.0",
     "loopback-boot": "^2.6.5",
     "loopback-connector-mongodb": "^1.8.0",
