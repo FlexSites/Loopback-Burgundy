@@ -11,17 +11,7 @@
   },
   "parse": {
   },
-  "routes:before": {
-    "./middleware/site-injector": {}
-  },
   "routes": {
-    "./middleware/site-injector": {}
-  },
-  "routes:after": {
-    "./middleware/site-injector": {}
-  },
-  "files:before": {
-    "./middleware/static": {}
   },
   "files": {
     "./middleware/static": {}
