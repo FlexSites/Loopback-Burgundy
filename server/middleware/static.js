@@ -17,8 +17,11 @@ module.exports = function(){
         req.url = '/'+ abbr + req.url;
         req.headers.host = 'flex-sites.s3-website-us-west-2.amazonaws.com';
         proxy.web(req,res,{});
+        proxy.on('error', function(e) {
+          next(e);
+        });
       }, function(err){
-        console.log('Error getting abbreviation for static site: %s', host, err);
+        next(err);
       });
   };
 
