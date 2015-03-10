@@ -1,24 +1,24 @@
 {
   "_meta": {
     "sources": [
-      "../models/event",
-      "../models/omniModel",
-      "../models/entertainer",
-      "../models/medium",
-      "../models/site",
-      "../models/page",
-      "../models/venue",
-      "../models/subscriber",
-      "../models/order",
-      "../models/ticket"
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models",
+      "../common/models/event",
+      "../common/models/omniModel",
+      "../common/models/entertainer",
+      "../common/models/medium",
+      "../common/models/site",
+      "../common/models/page",
+      "../common/models/venue",
+      "../common/models/subscriber",
+      "../common/models/order",
+      "../common/models/ticket"
     ]
   },
   "User": {
     "dataSource": "mongo"
-  },
-  "OmniModel": {
-    "dataSource": "mongo",
-    "public":false
   },
   "AccessToken": {
     "dataSource": "mongo",
@@ -35,6 +35,10 @@
   "Role": {
     "dataSource": "mongo",
     "public": false
+  },
+  "OmniModel": {
+    "dataSource": "mongo",
+    "public":false
   },
   "Event": {
     "dataSource": "mongo",
