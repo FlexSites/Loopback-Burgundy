@@ -13,8 +13,15 @@
   },
   "routes": {
   },
+  "files:before": {
+    "./middleware/static-prefix": {},
+    "compression":{}
+  },
   "files": {
     "./middleware/static": {}
+    "loopback#static": {
+      "params": "$!../../sites"
+    }
   },
   "final": {
     "loopback#urlNotFound": {}
