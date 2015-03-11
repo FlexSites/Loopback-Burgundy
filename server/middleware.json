@@ -11,6 +11,9 @@
   },
   "parse": {
   },
+  "routes:before": {
+    "./middleware/api-prefix": {}
+  },
   "routes": {
   },
   "files:before": {
@@ -22,6 +25,9 @@
     "loopback#static": {
       "params": "$!../../sites"
     }
+  },
+  "files:after": {
+    "./middleware/angular-html5": {}
   },
   "final": {
     "loopback#urlNotFound": {}
