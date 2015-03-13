@@ -1,7 +1,8 @@
 {
-  "restApiRoot": "/",
+  "restApiRoot": "/api",
   "host": "0.0.0.0",
   "port": 80,
+  "legacyExplorer": false,
   "remoting": {
     "context": {
       "enableHttpContext": true

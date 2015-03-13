@@ -1,0 +1,38 @@
+{
+  "initial:before": {
+    "loopback#favicon": {}
+  },
+  "initial": {
+    "compression": {}
+  },
+  "session": {
+  },
+  "auth": {
+  },
+  "parse": {
+  },
+  "routes:before": {
+    "./middleware/api-prefix": {}
+  },
+  "routes": {
+  },
+  "files:before": {
+    "./middleware/static-prefix": {},
+    "compression":{}
+  },
+  "files": {
+    "./middleware/static": {},
+    "loopback#static": {
+      "params": "$!../../sites"
+    }
+  },
+  "files:after": {
+    "./middleware/angular-html5": {}
+  },
+  "final": {
+    "loopback#urlNotFound": {}
+  },
+  "final:after": {
+    "errorhandler": {}
+  }
+}
