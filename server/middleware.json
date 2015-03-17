@@ -12,16 +12,17 @@
   "parse": {
   },
   "routes:before": {
-    "./middleware/api-prefix": {}
+    "loopback#context": {},
+    "./middleware/api-prefix": {},
+    "./middleware/site-injector": {}
   },
   "routes": {
   },
   "files:before": {
-    "./middleware/static-prefix": {},
     "compression":{}
   },
   "files": {
-    "./middleware/static": {},
+    "./middleware/static-proxy": {},
     "loopback#static": {
       "params": "$!../../sites"
     }
