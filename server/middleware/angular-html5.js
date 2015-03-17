@@ -1,12 +1,13 @@
 module.exports = function(){
-  var env = process.env.NODE_ENV || 'local';
-  var isLocal = env === 'local';
+  var env = process.env.NODE_ENV || 'local'
+    , isLocal = env === 'local';
   return function(req,res,next){
     if(!~req.url.split('/').pop().indexOf('.')){
       if(!isLocal){
-        // Check if the page should exists
+        // TODO: Check if the page should exists, return 404 otherwise
       }
-      res.sendfile('/www/sites/'+req.abbr+'/public/index.html');
+      return res.sendFile('/www/sites/'+req.abbr+'/public/index.html');
     }
+    next();
   };
 };
