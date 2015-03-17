@@ -1,15 +1,17 @@
 var httpProxy = require('http-proxy');
+var loopback = require('loopback');
 
 module.exports = function(){
 
-  var env = process.env.NODE_ENV || 'local';
-  var isLocal = env === 'local';
+  var bucket = process.env.S3_BUCKET;
+  var isLocal = !bucket;
   var proxy = httpProxy.createProxyServer({
-    target: 'http://flex-sites.s3-website-us-west-2.amazonaws.com'
+    target: bucket
   });
 
   return function(req,res,next){
-    var abbr = req.abbr;
+    var ctx = loopback.getCurrentContext()
+      , abbr = ctx.get('site').abbr;
     if(isLocal){
       abbr += '/public';
     }
@@ -17,7 +19,8 @@ module.exports = function(){
     if(isLocal){
       return next();
     }
-    req.headers.host = 'flex-sites.s3-website-us-west-2.amazonaws.com';
+    console.log('HITTING AMAZON');
+    req.headers.host = bucket;
     proxy.web(req,res,{});
     proxy.on('error', function(e) {
       next(e);
