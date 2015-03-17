@@ -13,12 +13,14 @@
   },
   "routes:before": {
     "loopback#context": {},
+    "./middleware/normalize-host": {},
     "./middleware/api-prefix": {},
     "./middleware/site-injector": {}
   },
   "routes": {
   },
   "files:before": {
+    "./middleware/www-redirect": {},
     "compression":{}
   },
   "files": {
