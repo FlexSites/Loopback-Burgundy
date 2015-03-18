@@ -16,12 +16,14 @@ module.exports = function(){
     if(process.env.NODE_ENV !== 'prod'){
       if(req.flex.host === '127.0.0.1'){
         req.flex.host = 'api.flexhub.io';
+        req.flex.isAPI = true;
       }
       req.flex.host = removePrefix(req.flex.host);
       if(origin){
         req.flex.origin = removePrefix(req.flex.origin);
       }
     }
+    req.flex.isAPI = req.flex.host === 'api.flexhub.io';
     next();
   };
 

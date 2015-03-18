@@ -1,6 +1,6 @@
 module.exports = function(){
   return function(req,res,next){
-    if('api.flexhub.io' === req.flex.host){
+    if(req.flex.isAPI){
       req.url = '/api' + req.url;
     }
     next();
