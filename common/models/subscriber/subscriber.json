@@ -40,7 +40,7 @@
       "permission": "ALLOW"
     },
     {
-      "model": "order",
+      "model": "subscriber",
       "accessType": "READ",
       "principalType": "ROLE",
       "principalId": "$everyone",
