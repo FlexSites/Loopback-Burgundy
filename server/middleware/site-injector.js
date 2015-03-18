@@ -2,10 +2,11 @@ var loopback = require('loopback');
 
 module.exports = function(){
   var siteMap = { host: {}, id: {} }
-    , find = loopback.findModel('Site').findOne;
+    , Site = loopback.findModel('Site')
+    , find = Site.findOne.bind(Site);
     
   return function(req,res,next){
-    
+
     var siteId = req.get('X-FlexSite')
       , type = siteId?'id':'host'
       , value = siteId || req.flex.origin || !req.flex.isAPI && req.flex.host
@@ -19,7 +20,7 @@ module.exports = function(){
       fn(null, site);
     } else {
       var query = { where: {} };
-      query[type] = value;
+      query.where[type] = value;
       find(query, fn);
     }
   };

@@ -10,8 +10,7 @@ module.exports = function(){
 
   return function(req,res,next){
     var ctx = loopback.getCurrentContext()
-      , site = ctx.get('site')
-      , url = req.url;
+      , site = ctx.get('site');
 
     if(!site){
       return next(new Error('Unrecognized static site.'));
