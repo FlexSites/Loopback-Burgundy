@@ -14,4 +14,12 @@ module.exports = function(SiteModel){
     }
     next();
   });
+  SiteModel.observe('before save', function injectSite(context, next) {
+    if (context.instance && !context.instance.id) {
+      var site = loopback.getCurrentContext().get('site');
+      if(!site) return next(new Error('Saving object to undefined site'));
+      context.instance.siteId = site.id;
+    }
+    next(); 
+  });
 };
