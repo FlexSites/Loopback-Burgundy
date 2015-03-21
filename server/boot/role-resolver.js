@@ -1,4 +1,5 @@
-var async = require('async');
+var async = require('async')
+  , loopback = require('loopback');
 
 module.exports = function(app) {
 
@@ -27,13 +28,23 @@ module.exports = function(app) {
           User.findById(userId, cb);
         },
         siteId: function(cb) {
+          if(context.method === 'create'){
+            var ctx = loopback.getCurrentContext();
+
+            // TODO: If its top level handle this way, still need a reliable solution for nested belongsTo
+            // if(!parentMap[modelName] && siteId){
+            //   return cb(null, siteId);
+            // } 
+            
+            return cb(null,(ctx.get('site')||{}).id);
+          }
           context.model.findById(context.modelId, function(err,obj){
             getSiteId(context.modelName, obj, cb);
           });
         }
       },
       function(err, results) {
-        if(results.user && results.siteId){
+        if(!err && results.user && results.siteId){
           results.user.sites.exists(results.siteId, next);
         }
         else {
