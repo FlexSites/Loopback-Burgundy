@@ -1,4 +1,5 @@
-var loopback = require('loopback');
+var loopback = require('loopback')
+  , glob = require('glob');
 
 module.exports = function(){
   var env = process.env.NODE_ENV || 'local'
@@ -8,7 +9,7 @@ module.exports = function(){
       if(!isLocal){
         // TODO: Check if the page should exists, return 404 otherwise
       }
-      return res.sendFile('/www/sites/' + loopback.getCurrentContext().get('site').abbr + '/public/index.html');
+      return res.sendFile('/'+glob.sync('/www/sites/' + loopback.getCurrentContext().get('site').abbr + '/public/index-*.html')[0]);
     }
     next();
   };

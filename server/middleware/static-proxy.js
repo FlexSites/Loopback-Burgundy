@@ -1,5 +1,6 @@
 var httpProxy = require('http-proxy')
-  , loopback = require('loopback');
+  , loopback = require('loopback')
+  , glob = require('glob');
 
 module.exports = function(){
 
@@ -17,7 +18,11 @@ module.exports = function(){
     }
     var abbr = site.abbr;
     if(!bucket){
+      if(req.originalUrl === '/'){
+        req.url = '/'+glob.sync('/www/sites/' + abbr + '/public/index-*.html')[0].split('/').pop();
+      }
       req.url = '/' + abbr + '/public' + req.url;
+
       return next();
     }
     req.url = '/'+ abbr + req.url;
