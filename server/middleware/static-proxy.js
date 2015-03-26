@@ -11,15 +11,21 @@ module.exports = function(){
 
   return function(req,res,next){
     var ctx = loopback.getCurrentContext()
-      , site = ctx.get('site');
+      , site = ctx.get('site')
+      , err;
 
-    if(!site){
+    if(!site || !site.abbr){
       return next(new Error('Unrecognized static site.'));
     }
     var abbr = site.abbr;
     if(!bucket){
       if(req.originalUrl === '/'){
-        req.url = '/'+glob.sync('/www/sites/' + abbr + '/public/index-*.html')[0].split('/').pop();
+        var idx = glob.sync('/www/sites/' + abbr + '/public/index-*.html');
+        if(idx && idx[0]){
+          req.url = '/'+idx[0].split('/').pop();
+        }
+      } else if(!~req.originalUrl.indexOf('.')){
+        return res.redirect('http://' + req.get('host') + '/#' + req.originalUrl, 301);
       }
       req.url = '/' + abbr + '/public' + req.url;
 
