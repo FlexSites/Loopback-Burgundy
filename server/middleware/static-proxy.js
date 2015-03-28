@@ -19,6 +19,9 @@ module.exports = function(){
 
     if(req.originalUrl === '/'){
       req.url = '/index.html';
+      res.set('Cache-Control', 'no-cache, no-store, must-revalidate');
+      res.set('Pragma', 'no-cache');
+      res.set('Expires', 0);
     }
     else if(!~req.originalUrl.indexOf('.')){
       return res.redirect(301, 'http://' + req.get('host') + '/#' + req.originalUrl);
