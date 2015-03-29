@@ -12,11 +12,13 @@
     "compression": "^1.4.1",
     "errorhandler": "^1.1.1",
     "glob": "^5.0.3",
+    "hogan.js": "^3.0.2",
     "http-proxy": "^1.8.1",
     "loopback": "^2.8.0",
     "loopback-boot": "^2.6.5",
     "loopback-connector-mongodb": "^1.8.0",
     "loopback-datasource-juggler": "^2.7.0",
+    "mailgun-js": "^0.6.8",
     "serve-favicon": "^2.0.1"
   },
   "optionalDependencies": {
