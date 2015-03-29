@@ -24,13 +24,7 @@
     }
   },
   "validations": [],
-  "relations": {
-        "site": {
-          "type": "belongsTo",
-          "model": "Site",
-          "foreignKey": "siteId"
-        }
-    },
+  "relations": {},
   "acls": [
     {
       "model": "subscriber",
@@ -40,7 +34,7 @@
       "permission": "ALLOW"
     },
     {
-      "model": "order",
+      "model": "subscriber",
       "accessType": "READ",
       "principalType": "ROLE",
       "principalId": "$everyone",
