@@ -2,7 +2,6 @@
 
 var Mailgun = require('mailgun-js')
   , hogan = require('hogan.js')
-  , path = require('path')
   , fs = require('fs')
   , mailgun = new Mailgun({
     apiKey: process.env.MAILGUN_API_KEY, 

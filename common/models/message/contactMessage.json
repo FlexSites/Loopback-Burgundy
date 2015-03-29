@@ -4,16 +4,16 @@
   "base": "Message",
   "idInjection": true,
   "properties": {
-      "name": {"type": "String", "required": true},
-      "phone": {"type": "String"}
+    "name": {"type": "String", "required": true},
+    "phone": {"type": "String"}
   },
   "validations": [],
   "relations": {
-      "site": {
-        "type": "belongsTo",
-        "model": "Site",
-        "foreignKey": "siteId"
-      }
+    "site": {
+      "type": "belongsTo",
+      "model": "Site",
+      "foreignKey": "siteId"
+    }
   },
   "acls": [],
   "methods": []
