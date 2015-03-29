@@ -1,10 +1,13 @@
 // MAIL SERVICE
 
-var Mailgun = require('mailgun-js');
-var hogan = require('hogan.js');
-var path = require('path');
-var fs = require('fs');
-
+var Mailgun = require('mailgun-js')
+  , hogan = require('hogan.js')
+  , path = require('path')
+  , fs = require('fs')
+  , mailgun = new Mailgun({
+    apiKey: process.env.MAILGUN_API_KEY, 
+    domain: 'comedian.io',
+  });
 
 
 module.exports = {
@@ -13,25 +16,13 @@ module.exports = {
       fn(err,hogan.compile(data).render(contact));
     });
   },
-  send: function(to,from,subject,body,fn){
+  send: function(message,fn){
     if(process.env.MAILGUN_API_KEY){
-      var mailgun = new Mailgun({apiKey: process.env.MAILGUN_API_KEY
-        , domain: 'comedian.io'});
-    
-      var data = {
-        from: from,
-        to: to,
-        subject: subject,
-        html: body
-      };
-
-      mailgun.messages().send(data, function (error, body) {
-        fn(error,{message: 'Successfully sent message'});
-      });
+      mailgun.messages().send(message, fn);
     }
     else {
-      console.log('Missing Mailgun API Key for: ' + to + ' ' + from + ' ' 
-        + subject + ' ' + body);
+      console.log('Missing Mailgun API Key for: %s to %s from %s message: %s'
+        , message.subject, message.to, message.from, message.body);
     }
   }
 };

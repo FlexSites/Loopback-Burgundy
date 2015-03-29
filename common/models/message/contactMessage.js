@@ -5,45 +5,42 @@ module.exports = function (Message) {
 
   Message.observe('before save', function (context, next) {
     var ctx = loopback.getCurrentContext()
-    , site = ctx.get('site')
-    , Site = loopback.findModel('Site');
+      , site = ctx.get('site');
 
-    if(site)
+    if(site && context.instance)
     {
-      if(context.instance){
-        context.instance.toEmail = site.email;
-        console.log(site.email)
-        context.instance.subject = 'New Message from ' + context.instance.name;
-        context.instance.type='contact';
-        context.instance.fromEmail='Comedian.io <contact@comedian.io>';
-        var data = {
-          name: context.instance.name,
-          email: context.instance.email,
-          phone: context.instance.phone,
-          title: context.instance.subject,
-          message: context.instance.body,
-          host: site.host
-        }
-        MailService.contactTemplate(data, function(err,html){
-          if(html){
-            MailService.send(context.instance.toEmail,context.instance.fromEmail
-              ,context.instance.subject,html,function(err,status){
-               console.log('send mail responded: ' 
-                + JSON.stringify({message: err||status.message}));
-            });
-          }
-          else{
-            console.log('Template Failed to build, email wasn\'t sent: ' 
-              + JSON.stringify(context.instance))
-          }
-        });
-        next();
+      var ins = context.instance;
+      ins.toEmail = site.email;
+      ins.subject = 'New Message from ' + context.instance.name;
+      ins.type='contact';
+      ins.fromEmail='Comedian.io <contact@comedian.io>';
+      var message = {
+        name: ins.name,
+        email: ins.email,
+        phone: ins.phone,
+        title: ins.subject,
+        body: ins.body,
+        host: site.host,
+        from: ins.fromEmail,
+        to: ins.toEmail,
+        subject: ins.subject,
       }
+      MailService.contactTemplate(message, function(err,html){
+        if(err){
+          return next('Template Failed to build, email wasn\'t sent: ' 
+            + JSON.stringify(context.instance));
+        }
+        message.body = html;
+        MailService.send(message,function(err,status){
+           console.log('send mail responded: ' 
+            + JSON.stringify({message: err||status.message}));
+        });
+      });
+      next();
     }
     else
     {
-      console.log('No Site in context for message.');
-      next();
+      next('No Site in context or context had no instance for contact message.');
     }
   });
 };
