@@ -30,7 +30,8 @@ module.exports = {
       });
     }
     else {
-      console.log('Missing Mailgun API Key');
+      console.log('Missing Mailgun API Key for: ' + to + ' ' + from + ' ' 
+        + subject + ' ' + body);
     }
   }
 };
