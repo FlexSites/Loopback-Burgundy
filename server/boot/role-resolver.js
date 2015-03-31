@@ -39,6 +39,9 @@ module.exports = function(app) {
             return cb(null,(ctx.get('site')||{}).id);
           }
           context.model.findById(context.modelId, function(err,obj){
+            if(err || !obj){
+              return cb(context.modelName + ' not found with id ' + context.modelId);
+            }
             getSiteId(context.modelName, obj, cb);
           });
         }
@@ -55,10 +58,10 @@ module.exports = function(app) {
 
   function getSiteId(type, obj, cb){
     var parent = parentMap[type];
-    if(obj.siteId){
+    if(obj && obj.siteId){
       cb(null, obj.siteId);
     }
-    else if(type === 'Site' && obj){
+    else if(obj && type === 'Site'){
       cb(null, obj.id);
     }
     else if(parent){
