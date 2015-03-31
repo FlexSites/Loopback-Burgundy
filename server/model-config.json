@@ -8,6 +8,7 @@
       "../common/models/event",
       "../common/models/omniModel",
       "../common/models/entertainer",
+      "../common/models/message",
       "../common/models/medium",
       "../common/models/site",
       "../common/models/page",
@@ -67,6 +68,10 @@
   "EntertainerMedium": {
     "dataSource": "mongo",
     "public": false
+  },
+  "ContactMessage": {
+    "dataSource": "mongo",
+    "public": true
   },
   "Medium": {
     "dataSource": "mongo",
