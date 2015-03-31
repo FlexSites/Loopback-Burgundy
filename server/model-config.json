@@ -15,11 +15,17 @@
       "../common/models/venue",
       "../common/models/subscriber",
       "../common/models/order",
+      "../common/models/user",
       "../common/models/ticket"
     ]
   },
   "User": {
-    "dataSource": "mongo"
+    "dataSource": "mongo",
+    "public": false
+  },
+  "FlexUser": {
+    "dataSource": "mongo",
+    "public": true
   },
   "AccessToken": {
     "dataSource": "mongo",

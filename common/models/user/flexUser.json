@@ -1,0 +1,38 @@
+{
+  "name": "FlexUser",
+  "plural": "users",
+  "base": "User",
+  "relations": {
+    "sites": {
+      "type": "hasAndBelongsToMany",
+      "model": "Site"
+    }
+  },
+  "acls": [
+    {
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW",
+      "property": "*"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "findById"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "__get__sites"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "get",
+      "accessType": "EXECUTE"
+    }
+  ]
+}

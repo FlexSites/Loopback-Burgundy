@@ -22,6 +22,7 @@
     "loopback-connector-mongodb": "^1.8.0",
     "loopback-datasource-juggler": "^2.7.0",
     "mailgun-js": "^0.6.8",
+    "selectn": "^0.9.6",
     "serve-favicon": "^2.0.1"
   },
   "optionalDependencies": {
