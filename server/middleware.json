@@ -15,7 +15,8 @@
     "loopback#context": {},
     "./middleware/normalize-host": {},
     "./middleware/api-prefix": {},
-    "./middleware/site-injector": {}
+    "./middleware/site-injector": {},
+    "./middleware/template":{}
   },
   "routes": {
   },
@@ -27,7 +28,7 @@
     "./middleware/static-proxy": {},
     "loopback#static": {
       "params": [
-        "$!../../sites", 
+        "$!../../sites",
         {
           "maxAge": "1y"
         }

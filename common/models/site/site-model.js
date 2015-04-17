@@ -17,9 +17,11 @@ module.exports = function(SiteModel){
   SiteModel.observe('before save', function injectSite(context, next) {
     if (context.instance && !context.instance.id) {
       var site = loopback.getCurrentContext().get('site');
-      if(!site) return next(new Error('Saving object to undefined site'));
-      context.instance.siteId = site.id;
+      if(!context.instance.siteId){
+        if(!site) return next(new Error('Saving object to undefined site'));
+        context.instance.siteId = site.id;
+      }
     }
-    next(); 
+    next();
   });
 };

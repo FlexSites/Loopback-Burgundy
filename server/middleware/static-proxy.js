@@ -13,21 +13,11 @@ module.exports = function(){
     var ctx = loopback.getCurrentContext()
       , site = ctx.get('site');
 
-    if(!site || !site.abbr){
+    if(!site){
       return next(new Error('Unrecognized static site.'));
     }
+    req.url = '/' + site.host + '/public' + req.url;
 
-    if(req.originalUrl === '/'){
-      req.url = '/index.html';
-      res.set('Cache-Control', 'no-cache, no-store, must-revalidate');
-      res.set('Pragma', 'no-cache');
-      res.set('Expires', 0);
-    }
-    else if(!~req.originalUrl.indexOf('.')){
-      return res.redirect(301, 'http://' + req.get('host') + '/#' + req.originalUrl);
-    }
-
-    req.url = '/' + site.abbr + '/public' + req.url;
     if(!bucket){
       return next();
     }

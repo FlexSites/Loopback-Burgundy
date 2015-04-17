@@ -24,6 +24,8 @@ module.exports = function(){
       }
     }
     req.flex.isAPI = req.flex.host === 'api.flexhub.io';
+    req.flex.isCDN = req.flex.host === 'cdn.flexsites.io';
+    req.flex.isAdmin = req.flex.host === 'admin.flexsites.io';
     next();
   };
 

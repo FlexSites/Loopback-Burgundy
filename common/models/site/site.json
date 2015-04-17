@@ -20,10 +20,6 @@
       "type": "string",
       "required": true
     },
-    "abbr": {
-      "type": "string",
-      "required": true
-    },
     "analytics": {
       "type": "string",
       "required": true
