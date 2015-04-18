@@ -9,7 +9,7 @@ module.exports = function(){
       if(!isLocal){
         // TODO: Check if the page should exists, return 404 otherwise
       }
-      return res.sendFile('/'+glob.sync('/www/sites/' + loopback.getCurrentContext().get('site').abbr + '/public/index-*.html')[0]);
+      return res.sendFile('/'+glob.sync('/www/sites/' + req.flex.host + '/public/index-*.html')[0]);
     }
     next();
   };
