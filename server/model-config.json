@@ -46,11 +46,15 @@
   },
   "OmniModel": {
     "dataSource": "mongo",
-    "public":false
+    "public": false
   },
   "BlogPost": {
     "dataSource": "mongo",
     "public": true
+  },
+  "BlogMedium": {
+    "dataSource": "mongo",
+    "public": false
   },
   "Event": {
     "dataSource": "mongo",

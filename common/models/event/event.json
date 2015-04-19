@@ -18,6 +18,9 @@
       "type": "number",
       "default": 0
     },
+    "doorTime": {
+      "type": "date"
+    },
     "description": {
       "type": "string"
     },

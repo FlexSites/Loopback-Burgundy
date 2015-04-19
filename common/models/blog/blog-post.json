@@ -19,13 +19,12 @@
   "relations": {
     "previewImage": {
       "type": "hasOne",
-      "model": "BlogMedia",
+      "model": "BlogMedium",
       "foreignKey": "blogId"
     },
     "media": {
       "type": "hasMany",
-      "model": "BlogMedia",
-      "foreignKey": "blogId"
+      "model": "BlogMedium"
     },
     "author": {
       "type": "belongsTo",
