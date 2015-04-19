@@ -5,6 +5,7 @@
       "loopback/server/models",
       "../common/models",
       "./models",
+      "../common/models/blog",
       "../common/models/event",
       "../common/models/omniModel",
       "../common/models/entertainer",
@@ -47,6 +48,10 @@
     "dataSource": "mongo",
     "public":false
   },
+  "BlogPost": {
+    "dataSource": "mongo",
+    "public": true
+  },
   "Event": {
     "dataSource": "mongo",
     "public": true
@@ -67,7 +72,11 @@
     "dataSource": "mongo",
     "public": true
   },
-  "Page": {
+  "DynamicPage": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "StaticPage": {
     "dataSource": "mongo",
     "public": true
   },

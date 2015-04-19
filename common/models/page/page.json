@@ -1,29 +1,19 @@
 {
   "name": "Page",
-  "plural": "pages",
   "base": "SiteModel",
   "idInjection": true,
   "properties": {
-    "isSearchable": {
-      "type": "string",
-      "required": true
-    },
-    "url": {
-      "type": "string",
-      "required": true
-    },
-    "type": {
+    "title": {
       "type": "string",
       "required": true
     },
     "description": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
-    "content": {
-      "type": "string"
-    },
-    "templateUrl": {
-      "type": "string"
+    "format": {
+      "type": "string",
+      "required": true
     }
   },
   "validations": [],

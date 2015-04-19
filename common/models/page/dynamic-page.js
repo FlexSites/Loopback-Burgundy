@@ -8,8 +8,6 @@ module.exports = function(Page){
   }
 
   Page.afterRemote('find', function (ctx, user, next) {
-
-    console.log('find page', ctx.instance);
     if(ctx.req.flex.isAdmin) return next();
 
     var set = setPrefix.bind(this, process.env.S3_BUCKET, removePrefix(ctx.req.get('origin')));

@@ -1,0 +1,38 @@
+{
+  "name": "BlogPost",
+  "plural": "posts",
+  "base": "Page",
+  "idInjection": true,
+  "properties": {
+    "publishedDate": {
+      "type": "date"
+    },
+    "content": {
+      "type": "string",
+      "required": true
+    },
+    "tags": {
+      "type": ["string"]
+    }
+  },
+  "validations": [],
+  "relations": {
+    "previewImage": {
+      "type": "hasOne",
+      "model": "BlogMedia",
+      "foreignKey": "blogId"
+    },
+    "media": {
+      "type": "hasMany",
+      "model": "BlogMedia",
+      "foreignKey": "blogId"
+    },
+    "author": {
+      "type": "belongsTo",
+      "model": "User"
+    }
+  },
+  "acls": [],
+  "methods": []
+}
+

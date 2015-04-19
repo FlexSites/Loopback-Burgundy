@@ -1,0 +1,26 @@
+{
+  "name": "StaticPage",
+  "plural": "pages",
+  "base": "Page",
+  "idInjection": true,
+  "properties": {
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "templateUrl": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string"
+    },
+    "isPublished": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}
+
