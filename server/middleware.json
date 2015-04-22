@@ -15,8 +15,7 @@
     "loopback#context": {},
     "./middleware/normalize-host": {},
     "./middleware/api-prefix": {},
-    "./middleware/site-injector": {},
-    "./middleware/template":{}
+    "./middleware/site-injector": {}
   },
   "routes": {
   },
@@ -25,15 +24,6 @@
     "compression":{}
   },
   "files": {
-    "./middleware/static-proxy": {},
-    "loopback#static": {
-      "params": [
-        "$!../../sites",
-        {
-          "maxAge": "1y"
-        }
-      ]
-    }
   },
   "final": {
     "loopback#urlNotFound": {}
