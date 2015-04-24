@@ -9,7 +9,7 @@ module.exports = function(){
 
     var siteId = req.get('X-FlexSite')
       , type = siteId?'id':'host'
-      , value = siteId || req.flex.origin || !req.flex.isAPI && req.flex.isCDN && req.flex.host
+      , value = siteId || req.flex.origin
       , fn = setSite.bind(loopback.getCurrentContext(), next);
     if(!value){
       return next();

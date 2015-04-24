@@ -5,12 +5,12 @@
 module.exports = function(){
   return function(req,res,next){
     var origin = req.get('Origin');
-    req.flex = {
-      host: req.hostname
-    };
+    req.flex = {};
 
     if(origin){
-      req.flex.origin = /^(?:https?:\/\/)(.*)$/.exec(origin)[1];
+      req.flex = {
+        origin:  /^(?:https?:\/\/)(.*)$/.exec(origin)[1]
+      };
     }
 
     if(req.method === 'OPTIONS'){
@@ -18,15 +18,10 @@ module.exports = function(){
     }
 
     if(process.env.NODE_ENV !== 'prod'){
-      req.flex.host = removePrefix(req.flex.host);
       if(origin){
-        req.flex.origin = removePrefix(req.flex.origin);
+        req.flex.origin = /^(?:local|test)\.?(.*)$/.exec(origin)[1];
       }
     }
     next();
   };
-
-  function removePrefix(url){
-    return /^(?:local|test)\.?(.*)$/.exec(url)[1];
-  }
 };
