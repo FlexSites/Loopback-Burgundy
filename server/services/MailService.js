@@ -4,7 +4,7 @@ var Mailgun = require('mailgun-js')
   , hogan = require('hogan.js')
   , fs = require('fs')
   , mailgun = new Mailgun({
-    apiKey: process.env.MAILGUN_API_KEY, 
+    apiKey: process.env.MAILGUN_API_KEY,
     domain: 'comedian.io',
   });
 
@@ -22,6 +22,7 @@ module.exports = {
     else {
       console.log('Missing Mailgun API Key for: %s to %s from %s message: %s'
         , message.subject, message.to, message.from, message.body);
+      fn(null,'Missing Mailgun Key');
     }
   }
 };
