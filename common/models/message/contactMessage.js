@@ -27,16 +27,17 @@ module.exports = function (Message) {
       }
       MailService.contactTemplate(message, function(err,html){
         if(err){
-          return next('Template Failed to build, email wasn\'t sent: ' 
+          return next('Template Failed to build, email wasn\'t sent: '
             + JSON.stringify(context.instance));
         }
         message.body = html;
+        ins.body = html;
         MailService.send(message,function(err,status){
-           console.log('send mail responded: ' 
+           console.log('send mail responded: '
             + JSON.stringify({message: err||status.message}));
+           next();
         });
       });
-      next();
     }
     else
     {
