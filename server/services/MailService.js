@@ -20,9 +20,9 @@ module.exports = {
       mailgun.messages().send(message, fn);
     }
     else {
-      console.log('Missing Mailgun API Key for: %s to %s from %s message: %s'
-        , message.subject, message.to, message.from, message.body);
-      fn(null,'Missing Mailgun Key');
+      var msg = 'Missing Mailgun API Key for: '+message.subject+' to '+message.to+' from '+message.from+' message: '+message.body;
+      console.log(msg);
+      fn(null, msg);
     }
   }
 };
