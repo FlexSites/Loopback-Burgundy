@@ -52,17 +52,9 @@
     "dataSource": "mongo",
     "public": true
   },
-  "BlogMedium": {
-    "dataSource": "mongo",
-    "public": false
-  },
   "Event": {
     "dataSource": "mongo",
     "public": true
-  },
-  "EventMedium": {
-    "dataSource": "mongo",
-    "public": false
   },
   "Showtime": {
     "dataSource": "mongo",
@@ -84,17 +76,13 @@
     "dataSource": "mongo",
     "public": true
   },
-  "EntertainerMedium": {
-    "dataSource": "mongo",
-    "public": false
-  },
   "ContactMessage": {
     "dataSource": "mongo",
     "public": true
   },
   "Medium": {
     "dataSource": "mongo",
-    "public": false
+    "public": true
   },
   "Venue": {
     "dataSource": "mongo",

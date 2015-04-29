@@ -84,6 +84,11 @@
       "type": "hasMany",
       "model": "Page",
       "foreignKey": "siteId"
+    },
+    "media": {
+      "type": "hasMany",
+      "model": "Medium",
+      "foreignKey": "siteId"
     }
   },
   "acls": [],

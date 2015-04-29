@@ -32,6 +32,10 @@
       "type": "hasMany",
       "model": "Event",
       "foreignKey": "venueId"
+    },
+    "media": {
+      "type": "referencesMany",
+      "model": "Medium"
     }
   },
   "acls": [],

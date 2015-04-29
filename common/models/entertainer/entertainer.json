@@ -26,9 +26,8 @@
   "validations": [],
   "relations": {
     "media": {
-      "type": "hasMany",
-      "model": "EntertainerMedium",
-      "foreignKey": "entertainerId"
+      "type": "referencesMany",
+      "model": "Medium"
     }
   },
   "acls": [],

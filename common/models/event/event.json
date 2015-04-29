@@ -67,8 +67,8 @@
       "type": "belongsTo",
       "model": "Venue"
     },
-    "medium": {
-      "type": "hasMany",
+    "media": {
+      "type": "referencesMany",
       "model": "Medium"
     }
   },

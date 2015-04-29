@@ -23,8 +23,8 @@
       "foreignKey": "blogId"
     },
     "media": {
-      "type": "hasMany",
-      "model": "BlogMedium"
+      "type": "referencesMany",
+      "model": "Medium"
     },
     "author": {
       "type": "belongsTo",

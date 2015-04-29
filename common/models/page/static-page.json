@@ -19,7 +19,16 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "media": {
+      "type": "referencesMany",
+      "model": "Medium",
+      "options": {
+        "validate": false,
+        "forceId": false
+      }
+    }
+  },
   "acls": [],
   "methods": []
 }
