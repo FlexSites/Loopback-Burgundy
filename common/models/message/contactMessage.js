@@ -10,10 +10,26 @@ module.exports = function (Message) {
     if(site && context.instance)
     {
       var ins = context.instance;
-      ins.toEmail = site.email;
+      ins.toEmail = site.contact.email;
       ins.subject = 'New Message from ' + context.instance.name;
       ins.type='contact';
-      ins.fromEmail='Comedian.io <contact@comedian.io>';
+      ins.fromEmail='FlexSites.io <contact@flexsites.io>';
+      next();
+    }
+    else
+    {
+      next('No Site in context or context had no instance for contact message.');
+    }
+  });
+
+  Message.observe('after save', function (context, next) {
+    var ctx = loopback.getCurrentContext()
+      , site = ctx.get('site');
+
+    if(site && context.instance)
+    {
+      var ins = context.instance;
+
       var message = {
         name: ins.name,
         email: ins.email,
@@ -30,7 +46,7 @@ module.exports = function (Message) {
           return next('Template Failed to build, email wasn\'t sent: '
             + JSON.stringify(context.instance));
         }
-        message.body = html;
+        message.html = html;
         ins.body = html;
         MailService.send(message,function(err,status){
            console.log('send mail responded: '

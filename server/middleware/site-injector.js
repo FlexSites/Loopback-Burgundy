@@ -26,7 +26,7 @@ module.exports = function(){
 
   function setSite(next, err, site){
     if (!err && site) {
-      this.set('site', siteMap.host[site.host] = siteMap.id[site.id] = {host: site.host, id:site.id, email: site.contact && site.contact.email});
+      this.set('site', siteMap.host[site.host] = siteMap.id[site.id] = site);
     }
     next(err);
   }

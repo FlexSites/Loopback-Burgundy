@@ -3,16 +3,21 @@
 var Mailgun = require('mailgun-js')
   , hogan = require('hogan.js')
   , fs = require('fs')
+  , path = require('path')
   , mailgun = new Mailgun({
     apiKey: process.env.MAILGUN_API_KEY,
-    domain: 'comedian.io',
+    domain: 'flexsites.io',
   });
 
 
 module.exports = {
   contactTemplate: function(contact,fn){
-    fs.readFile('/www/global/html/email.html','utf8', function (err,data) {
-      fn(err,hogan.compile(data).render(contact));
+    var file = path.join(__dirname, 'contactTemplate.html');
+    fs.readFile(file,'utf8', function (err,data) {
+      fn(err,hogan.compile(data, {
+        delimiters: '[[ ]]',
+        disableLambda: false
+      }).render({contactMessage: contact}));
     });
   },
   send: function(message,fn){
