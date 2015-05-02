@@ -11,10 +11,7 @@ module.exports = function(){
 
     var origin = req.get('Origin');
     if(origin){
-      origin = /^(?:https?:\/\/)(.*)$/.exec(origin)[1];
-    }
-    if(process.env.NODE_ENV !== 'prod' && origin){
-      origin = /^(?:local|test)\.?(.*)$/.exec(origin)[1];
+      origin = /^(?:https?:\/\/)?(?:www|local|test)?\.?(.*)$/.exec(origin)[1];
     }
     req.flex = {
       origin: origin
