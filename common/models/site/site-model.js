@@ -7,10 +7,18 @@ module.exports = function(SiteModel){
     var context = loopback.getCurrentContext()
       , site = context.get('site');
     if(site){
+      var addId = true;
       if(!ctx.query.where){
         ctx.query.where = {};
       }
-      ctx.query.where.siteId = site.id;
+      if(ctx.query.where.and){
+        ctx.query.where.and.forEach(function(q){
+          if(q.siteId){
+            return addId = false;
+          }
+        });
+      }
+      if(addId) ctx.query.where.siteId = site.id;
     }
     next();
   });

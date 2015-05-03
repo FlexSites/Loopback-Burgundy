@@ -10,8 +10,6 @@ module.exports = function (Page) {
 
   Page.observe('access', function filterProperties(ctx, next) {
     ctx.query.include = 'media';
-
-    console.log('ACCESS', ctx.query);
     next();
   });
 };

@@ -12,7 +12,6 @@ module.exports = function(Medium){
     if(!site || !site.host) return cb('Invalid host');
     random(function(err, hash){
       aws.config.update({accessKeyId: process.env.S3_KEY, secretAccessKey: process.env.S3_SECRET});
-      console.log('SITE *******', site);
       var filename = site.host+'/'+hash+'.'+name.split('.').pop().toLowerCase();
       var s3 = new aws.S3();
       s3.getSignedUrl('putObject', {
