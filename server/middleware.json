@@ -19,8 +19,6 @@
   "routes": {
   },
   "files:before": {
-    "./middleware/www-redirect": {},
-    "compression":{}
   },
   "files": {
   },

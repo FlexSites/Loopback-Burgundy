@@ -25,6 +25,7 @@
     "loopback-connector-mongodb": "^1.8.0",
     "loopback-datasource-juggler": "^2.26.3",
     "mailgun-js": "^0.6.8",
+    "newrelic": "^1.18.5",
     "selectn": "^0.9.6",
     "serve-favicon": "^2.0.1"
   },
