@@ -1,0 +1,15 @@
+{
+  "name": "Testimonial",
+  "plural": "testimonials",
+  "base": "SiteModel",
+  "idInjection": true,
+  "properties": {
+    "quote": {"type": "String", "required": true},
+    "author": {"type": "String", "required": true},
+    "company": {"type": "String", "required": true}
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}
