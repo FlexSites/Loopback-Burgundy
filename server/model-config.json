@@ -1,23 +1,23 @@
 {
   "_meta": {
     "sources": [
+      "./models",
       "loopback/common/models",
       "loopback/server/models",
       "../common/models",
-      "./models",
       "../common/models/blog",
-      "../common/models/event",
-      "../common/models/omniModel",
       "../common/models/entertainer",
-      "../common/models/message",
+      "../common/models/event",
       "../common/models/medium",
-      "../common/models/site",
-      "../common/models/page",
-      "../common/models/venue",
-      "../common/models/subscriber",
+      "../common/models/message",
+      "../common/models/omniModel",
       "../common/models/order",
+      "../common/models/page",
+      "../common/models/site",
+      "../common/models/subscriber",
+      "../common/models/ticket",
       "../common/models/user",
-      "../common/models/ticket"
+      "../common/models/venue"
     ]
   },
   "User": {
