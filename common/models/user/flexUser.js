@@ -3,7 +3,7 @@ var crypto = require('crypto')
 
 module.exports = function(FlexUser){
   FlexUser.afterRemote('*', function (ctx, user, next) {
-    var email = selectn('result.email')(ctx) || selectn('result.user.email')(ctx) || user.email;
+    var email = selectn('result.email')(ctx) || selectn('result.user.email')(ctx) || selectn('email', user);
     if(!email) return next();
     if(!Array.isArray(ctx.result)){
       var image = getImage(user.email);
