@@ -15,6 +15,7 @@
       "../common/models/page",
       "../common/models/site",
       "../common/models/subscriber",
+      "../common/models/testimonial",
       "../common/models/ticket",
       "../common/models/user",
       "../common/models/venue"
@@ -95,6 +96,10 @@
   "Subscriber": {
     "dataSource": "mongo",
     "public": false
+  },
+  "Testimonial": {
+    "dataSource": "mongo",
+    "public": true
   },
   "Order": {
     "dataSource": "mongo",

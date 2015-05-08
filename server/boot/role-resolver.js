@@ -4,7 +4,7 @@ var async = require('async')
 module.exports = function(app) {
 
   var Role = app.models.Role
-    , User = app.models.User;
+    , User = app.models.FlexUser;
 
   var parentMap = {
     Section: 'Venue',
@@ -22,7 +22,7 @@ module.exports = function(app) {
     if(!userId){
       return next(null, false);
     }
-    
+
     async.parallel({
         user: function(cb) {
           User.findById(userId, cb);
@@ -34,8 +34,8 @@ module.exports = function(app) {
             // TODO: If its top level handle this way, still need a reliable solution for nested belongsTo
             // if(!parentMap[modelName] && siteId){
             //   return cb(null, siteId);
-            // } 
-            
+            // }
+
             return cb(null,(ctx.get('site')||{}).id);
           }
           context.model.findById(context.modelId, function(err,obj){
@@ -47,12 +47,8 @@ module.exports = function(app) {
         }
       },
       function(err, results) {
-        if(!err && results.user && results.siteId){
-          results.user.sites.exists(results.siteId, next);
-        }
-        else {
-          next(err,false);
-        }
+        if(err || !results.user || !results.siteId) return next(err,false);
+        results.user.sites.exists(results.siteId, next);
       });
   });
 
