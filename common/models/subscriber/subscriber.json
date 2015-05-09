@@ -1,7 +1,7 @@
 {
   "name": "Subscriber",
   "plural": "subscribers",
-  "base": "SiteModel",
+  "base": "PersistedModel",
   "idInjection": true,
   "properties": {
     "name": {
@@ -14,31 +14,37 @@
     "zip": {
       "type": "string"
     },
-    "site": {
-      "type": "string",
-      "required": true
-    },
     "status": {
       "type": "string",
       "default": "S"
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "site": {
+      "type": "belongsTo",
+      "model": "Site",
+      "foreignKey": "siteId"
+    }
+  },
   "acls": [
     {
-      "model": "subscriber",
-      "accessType": "WRITE",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "ALLOW"
-    },
-    {
-      "model": "subscriber",
       "accessType": "READ",
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "siteOwner",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
     }
   ],
   "methods": []

@@ -95,7 +95,7 @@
   },
   "Subscriber": {
     "dataSource": "mongo",
-    "public": false
+    "public": true
   },
   "Testimonial": {
     "dataSource": "mongo",
