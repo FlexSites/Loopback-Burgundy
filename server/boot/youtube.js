@@ -1,4 +1,3 @@
-console.log('youtube');
 module.exports = function(server) {
   var remotes = server.remotes();
   // modify all returned values

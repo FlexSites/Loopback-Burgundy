@@ -26,7 +26,7 @@ module.exports = {
     }
     else {
       var msg = 'Missing Mailgun API Key for: '+message.subject+' to '+message.to+' from '+message.from+' message: '+message.body;
-      console.log(msg);
+      console.info(msg);
       fn(null, msg);
     }
   }

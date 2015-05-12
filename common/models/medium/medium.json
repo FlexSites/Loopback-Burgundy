@@ -8,6 +8,9 @@
       "type": "string",
       "required": true
     },
+    "filetype": {
+      "type": "string"
+    },
     "name": {
       "type": "string",
       "required": true

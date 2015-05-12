@@ -51,7 +51,7 @@ module.exports = function (Message) {
         MailService.send(message,function(err,status){
            console.log('send mail responded: '
             + JSON.stringify({message: err||status.message}));
-           next();
+           next(err);
         });
       });
     }
