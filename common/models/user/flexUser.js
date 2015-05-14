@@ -1,7 +1,29 @@
 var crypto = require('crypto')
-  , selectn = require('selectn');
+  , selectn = require('selectn')
+  , gateway = require('braintree');
 
 module.exports = function(FlexUser){
+
+  FlexUser.beforeRemote('*', function(ctx, user, next){
+    console.log('user remote', ctx.methodString);
+    // gateway.customer.create({
+    //   firstName: "Jen",
+    //   lastName: "Smith",
+    //   company: "Braintree",
+    //   email: "jen@example.com",
+    //   phone: "312.555.1234",
+    //   fax: "614.555.5678",
+    //   website: "www.example.com"
+    // }, function (err, result) {
+    //   result.success;
+    //   // true
+
+    //   result.customer.id;
+    //   // e.g. 494019
+    // });
+    next();
+  })
+
   FlexUser.afterRemote('*', function (ctx, user, next) {
     var email = selectn('result.email')(ctx) || selectn('result.user.email')(ctx) || selectn('email', user);
     if(!email) return next();

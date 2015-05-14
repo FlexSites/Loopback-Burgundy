@@ -103,7 +103,7 @@
   },
   "Order": {
     "dataSource": "mongo",
-    "public": false
+    "public": true
   },
   "Ticket": {
     "dataSource": "mongo",

@@ -4,11 +4,9 @@
   "base": "SiteModel",
   "idInjection": true,
   "properties": {
-    "site": {
-      "type": "objectId",
-      "ref": "Site"
+    "transactionId": {
+      "type": "string"
     },
-    "transactionId": {"type": "string"},
     "firstName": {
       "type": "string",
       "required": true
@@ -47,6 +45,14 @@
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "DENY"
+    },
+    {
+      "model": "order",
+      "property": "token",
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
     }
   ],
   "methods": []
