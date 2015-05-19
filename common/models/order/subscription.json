@@ -1,0 +1,11 @@
+{
+  "name": "Subscription",
+  "plural": "subscriptions",
+  "base": "Model",
+  "idInjection": false,
+  "properties": { },
+  "validations": [],
+  "relations": { },
+  "acls": [ ],
+  "methods": []
+}

@@ -2,6 +2,20 @@
   "name": "FlexUser",
   "plural": "users",
   "base": "User",
+  "properties": {
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string",
+      "required": true
+    },
+    "phone": {
+      "type": "number",
+      "required": true
+    }
+  },
   "relations": {
     "sites": {
       "type": "hasAndBelongsToMany",

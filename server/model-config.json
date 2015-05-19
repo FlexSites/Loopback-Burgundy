@@ -97,6 +97,10 @@
     "dataSource": "mongo",
     "public": true
   },
+  "Subscription": {
+    "dataSource": null,
+    "public": true
+  },
   "Testimonial": {
     "dataSource": "mongo",
     "public": true
