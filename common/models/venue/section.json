@@ -4,11 +4,20 @@
   "base": "OmniModel",
   "idInjection": true,
   "properties": {
+    "type": {
+      "type": "string",
+      "default": "GA"
+    },
     "name": {
       "type": "string",
       "required": true
     },
-    "color": {"type": "string"}
+    "color": {
+      "type": "string"
+    },
+    "seatCount": {
+      "type":"number"
+    }
   },
   "validations": [],
   "relations": {

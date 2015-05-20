@@ -21,7 +21,12 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "media": {
+      "type": "referencesMany",
+      "model": "Medium"
+    }
+  },
   "acls": [
     {
       "principalType": "ROLE",
