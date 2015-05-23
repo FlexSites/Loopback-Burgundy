@@ -35,17 +35,21 @@
     },
     "pricingTiers": [
       {
-        "date": {
-          "type": "date"
+        "filter": {
+          "type": "string"
         },
-        "section": {
-          "type": "objectId",
-          "ref": "Section"
-        },
-        "price": {
-          "type": "number",
-          "required": true
-        }
+        "sections": [
+          {
+            "id": {
+              "type":"string",
+              "required": true
+            },
+            "price": {
+              "type": "number",
+              "required": true
+            }
+          }
+        ]
       }
     ]
   },
@@ -55,11 +59,11 @@
       "type": "belongsTo",
       "model": "Site"
     },
-    "entertainer": {
+    "entertainers": {
       "type": "hasMany",
       "model": "Entertainer"
     },
-    "showtime": {
+    "showtimes": {
       "type": "hasMany",
       "model": "Showtime"
     },
