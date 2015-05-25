@@ -12,7 +12,7 @@ module.exports = function (Message) {
       var ins = context.instance;
       ins.toEmail = site.contact.email;
       ins.subject = 'New Message from ' + context.instance.name;
-      ins.type='contact';
+      ins.type = 'contact';
       ins.fromEmail = context.instance.email;
       next();
     }
@@ -37,10 +37,11 @@ module.exports = function (Message) {
         title: ins.subject,
         body: ins.body,
         host: site.host,
-        from: ins.email,
+        from: 'FlexSites.io <contact@flexsites.io>',
         to: ins.toEmail,
         subject: ins.subject,
       };
+      message['h:Reply-To'] = ins.email;
       MailService.contactTemplate(message, function(err,html){
         if(err){
           return next('Template Failed to build, email wasn\'t sent: '
@@ -48,7 +49,6 @@ module.exports = function (Message) {
         }
         message.html = html;
         ins.body = html;
-        ins.sender = 'FlexSites.io <contact@flexsites.io>';
         MailService.send(message,function(err,status){
            console.log('send mail responded: '
             + JSON.stringify({message: err||status.message}));
