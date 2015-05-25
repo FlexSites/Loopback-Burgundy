@@ -37,7 +37,7 @@ module.exports = function (Message) {
         title: ins.subject,
         body: ins.body,
         host: site.host,
-        from: ins.fromEmail,
+        from: ins.email,
         to: ins.toEmail,
         subject: ins.subject,
       }
@@ -48,6 +48,7 @@ module.exports = function (Message) {
         }
         message.html = html;
         ins.body = html;
+        ins.sender = 'FlexSites.io <contact@flexsites.io>';
         MailService.send(message,function(err,status){
            console.log('send mail responded: '
             + JSON.stringify({message: err||status.message}));
