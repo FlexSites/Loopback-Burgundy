@@ -13,7 +13,7 @@ module.exports = function (Message) {
       ins.toEmail = site.contact.email;
       ins.subject = 'New Message from ' + context.instance.name;
       ins.type='contact';
-      ins.fromEmail='FlexSites.io <contact@flexsites.io>';
+      ins.fromEmail = context.instance.email;
       next();
     }
     else
@@ -40,7 +40,7 @@ module.exports = function (Message) {
         from: ins.email,
         to: ins.toEmail,
         subject: ins.subject,
-      }
+      };
       MailService.contactTemplate(message, function(err,html){
         if(err){
           return next('Template Failed to build, email wasn\'t sent: '
