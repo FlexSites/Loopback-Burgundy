@@ -42,7 +42,7 @@ export default function(app) {
     connections: {
       myLocalmongo: {
         adapter: 'mongo',
-        url: 'mongodb://heroku_app34616047:76dbhonrp4rk9qe5uonccl6c6m@ds051831.mongolab.com:51831/heroku_app34616047'
+        url: process.env.MONGOLAB_URI
       }
     },
 

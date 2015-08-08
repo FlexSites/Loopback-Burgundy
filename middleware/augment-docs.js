@@ -3,7 +3,6 @@ import { pathTemplate } from '../lib/docs/default';
 import { capitalize, camelFromDash } from '../lib/string-util';
 import objectPath from 'object-path';
 import filterParameters from '../lib/docs/filters.json';
-import validation from 'swagger-validation';
 
 export function getModelDefinitions(name, properties, obj) {
 
