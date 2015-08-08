@@ -16,7 +16,6 @@ import pageRender from './middleware/page-render';
 import api from './middleware/api';
 import siteInjector from './middleware/site-injector';
 import augmentDocs from './middleware/augment-docs';
-import cors from 'cors';
 import { json } from 'body-parser';
 
 var app = express();
@@ -27,11 +26,12 @@ global.__root = __dirname;
 
 initDB(app)
   .then((models) => {
-    app.use(cors());
 
-    app.use(json({ extended: true }));
     // Redirect Apex domains to www
     app.use(wwwRedirect());
+
+    // Parse JSON requests
+    app.use(json({ extended: true }));
 
     // Swagger Spec
     app.use(SWAGGER_PATH, augmentDocs(models));
