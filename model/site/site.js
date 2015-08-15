@@ -28,6 +28,10 @@ export default {
     title: {
       type: 'string'
     },
+    isSinglePageApp: {
+      type: 'boolean',
+      defaultsTo: false
+    },
     styles: {
       type: 'array'
     },
