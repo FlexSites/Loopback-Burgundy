@@ -3,8 +3,8 @@ import mongoAdapter from 'sails-mongo';
 import glob from 'glob';
 import path from 'path';
 import Promise from 'bluebird';
-import { merge, clone } from 'lodash';
-import { camelFromDash } from '../lib/string-util';
+import { merge } from 'lodash';
+import { pascal } from '../lib/string-util';
 
 export default function(app) {
   // Instantiate a new instance of the ORM
@@ -21,7 +21,7 @@ export default function(app) {
     .map(getModel)
     .filter(model => model.public)
     .map(model => {
-      model.tableName = camelFromDash(model.identity);
+      model.tableName = pascal(model.identity);
       return model;
     })
     .map(model => Waterline.Collection.extend(model))
@@ -54,7 +54,7 @@ export default function(app) {
     .then((models) => {
       app.set('models', models.collections);
       app.set('connections', models.connections);
-      console.log('Waterline is up');
+      console.info('Waterline is up');
       return models.collections;
     });
 
@@ -64,9 +64,38 @@ export default function(app) {
 
     if (typeof obj === 'string') obj = schemas[name] = require(obj);
 
-    if (obj.base) obj = merge({}, getModel(obj.base), obj);
+    if (obj.base) obj = mergeParent(getModel(obj.base), obj);
 
     return obj;
+  }
+
+  function mergeParent(parent, child) {
+    let parentMethods = getModelFunctions(parent);
+
+    getModelFunctions(child)
+      .filter(method => ~parentMethods.indexOf(method))
+      .map(method => {
+        if (!Array.isArray(parent[method])) parent[method] = [parent[method]];
+        parent[method].push(child[method]);
+        child[method] = parent[method];
+      });
+
+    return merge({}, parent, child);
+  }
+
+  function getModelFunctions(model) {
+    let methods = [
+      'beforeValidate',
+      'afterValidate',
+      'beforeUpdate',
+      'afterUpdate',
+      'beforeCreate',
+      'afterCreate',
+      'beforeDestroy',
+      'afterDestroy'
+    ];
+    return Object.keys(model)
+      .filter(key => ~methods.indexOf(key));
   }
 }
 

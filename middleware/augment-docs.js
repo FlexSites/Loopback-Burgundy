@@ -1,6 +1,6 @@
 
 import { pathTemplate } from '../lib/docs/default';
-import { capitalize, camelFromDash } from '../lib/string-util';
+import { capitalize, camel } from '../lib/string-util';
 import objectPath from 'object-path';
 import filterParameters from '../lib/docs/filters.json';
 
@@ -50,7 +50,7 @@ export default function augmentDocs(models) {
     .filter(model => model.public && model.connection || console.log(model.connection))
     .map(model => {
       Object.assign(api.paths, pathTemplate(model));
-      getModelDefinitions(camelFromDash(model.identity), model.attributes, api.definitions);
+      getModelDefinitions(camel(model.identity), model.attributes, api.definitions);
     });
 
   for (var path in api.paths) {

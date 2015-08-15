@@ -15,7 +15,7 @@ export default function(app) {
     let promises = [
       util.getPage(req),
       util.getTemplate(req),
-      util.getRouteData(req)
+      util.getRouteData(req, res)
     ];
 
     Promise.all(promises)
@@ -28,9 +28,7 @@ export default function(app) {
         flexData = JSON.parse(flexData);
 
         return getFlexData(flexData, req, res, data)
-          .then((fData) => {
-            return [ page, template, fData ];
-          });
+          .then(fData => [ page, template, fData ]);
       })
       .then(([ page, template, data ]) => {
         var include = includeTemplate.bind(this, page);

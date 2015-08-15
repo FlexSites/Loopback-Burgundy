@@ -1,22 +1,26 @@
+'use strict';
 
-import path from 'path';
 import express from 'express';
-import { version } from './package.json';
-import semver from 'semver';
 
 // Initialization
 import initDB from './init/models';
+import { NotFound } from './lib/error';
+
 // Middlewares
+import { json } from 'body-parser';
 import swaggerUi from 'swaggerize-ui';
 import stormpathInit from './middleware/stormpath-init';
-import siteRequired from './middleware/stormpath/site-required';
 import wwwRedirect from './middleware/www-redirect';
+
+// Router
 import staticProxy from './middleware/static-proxy';
 import pageRender from './middleware/page-render';
-import api from './middleware/api';
+
+// API
+import resourceRouter from './middleware/api/resource-router';
+import magic from './middleware/api/magic';
 import siteInjector from './middleware/site-injector';
 import augmentDocs from './middleware/augment-docs';
-import { json } from 'body-parser';
 
 var app = express();
 const DOCS_PATH = '/docs';
@@ -45,10 +49,9 @@ initDB(app)
     // Stormpath Config
     app.use(stormpathInit(app));
 
-
-    app.use((req, res, next) => {
-      if (app.get('models')) return next();
-      res.sendStatus(503);
+    app.get('/api/v1/sessions', (req, res, next) => {
+      if (req.user) return res.send([ req.user ]);
+      next(new NotFound('Session not found'));
     });
 
     app.use(siteInjector(app));
@@ -60,10 +63,10 @@ initDB(app)
     });
 
     // API
-    app.use('/api/:version/:resource', api(app));
+    app.use('/api/:version/:resource', magic(app), resourceRouter(app));
 
     // Page Render
-    app.use(pageRender(app));
+    app.get('/:resource?/:id?', magic(app), pageRender(app));
 
     app.use((err, req, res, next) => {
       console.log('Found err', err.stack);

@@ -13,4 +13,10 @@ export default {
     }
   },
   beforeAccess: (req, res, next) => next(),
+  acl: {
+    create: 'siteOwner',
+    read: '$everyone',
+    update: 'siteOwner',
+    delete: 'siteOwner'
+  }
 };
