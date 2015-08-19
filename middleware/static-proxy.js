@@ -1,23 +1,43 @@
-var httpProxy = require('http-proxy');
+'use strict';
+
+import config from 'config';
+import express from 'express';
+import path from 'path';
+import httpProxy from 'http-proxy';
 
 export default function() {
 
-  var isFile = /\.[a-z0-9]{2,4}$/;
-  var proxy = httpProxy.createProxyServer({
-    changeOrigin: true,
-    target: process.env.S3_BUCKET || 'http://localcdn.flexsites.io'
-  });
+  let isFile = /\.[a-z0-9]{2,4}$/
+    , prefixMatch = /^(?:https?:\/\/)?(?:www|local|test)?\.?(.*)$/
+    , middleware = staticMiddleware();
 
-  return function(req, res, next) {
+
+  return (req, res, next) => {
     if (!isFile.test(req.url)) return next();
-
-    var host = removePrefix(req.hostname);
-    req.url = `/${host}/public${req.url}`;
-    proxy.web(req, res, {});
-    proxy.on('error', next);
+    req.url = `/${removePrefix(req.hostname)}/public${req.url}`;
+    middleware(req, res, next);
   };
 
+  function staticMiddleware() {
+
+    let { bucket, region } = config.get('aws.s3');
+
+    // If there's no bucket, stop short and serve local files
+    if (!bucket) return express.static(path.join(__root, '../sites'));
+
+    let proxy = httpProxy.createProxyServer({
+      changeOrigin: true,
+      target: `http://${bucket}.s3-website-${region}.amazonaws.com`
+    });
+
+    return (req, res, next) => {
+      proxy.web(req, res, {});
+      proxy.on('error', next);
+    };
+  }
+
   function removePrefix(url) {
-    return /^(?:https?:\/\/)?(?:www|local|test)?\.?(.*)$/.exec(url)[1];
+    return prefixMatch.exec(url)[1];
   }
 }
+

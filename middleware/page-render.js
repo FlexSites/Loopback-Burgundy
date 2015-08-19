@@ -30,7 +30,7 @@ export default function(app) {
         return getFlexData(flexData, req, res, data)
           .then(fData => [ page, template, fData ]);
       })
-      .then(([ page, template, data ]) => {
+      .then(([ page, layout, data ]) => {
         var include = includeTemplate.bind(this, page);
 
         Object.keys(lambdas).map(function(key) {
@@ -47,7 +47,7 @@ export default function(app) {
               ${include('content')}
               [[/layout]]
             `, options)
-            .render(data, template)
+            .render(data, { layout })
         );
       })
       .catch(next);

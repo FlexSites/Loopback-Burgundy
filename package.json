@@ -9,7 +9,8 @@
   "author": "Seth Tippetts <sethtippetts@gmail.com> (http://sethtippetts.com)",
   "license": "ISC",
   "dependencies": {
-    "async": "^1.4.0",
+    "async": "^1.4.2",
+    "aws-sdk": "^2.1.45",
     "babel": "^5.8.12",
     "bluebird": "^2.9.34",
     "body-parser": "^1.13.3",
