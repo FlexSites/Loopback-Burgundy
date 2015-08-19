@@ -5,7 +5,6 @@ export default {
     region: 'us-west-2',
     s3: {
       region: defer(function(cfg) {
-        console.log('CFG', cfg, this);
         return cfg.aws.region;
       })
     }
