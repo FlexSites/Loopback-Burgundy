@@ -27,11 +27,13 @@ export default function(app) {
     .put((req, res, next) => req.model.middleware.beforeValidate(req, res, next),
     ({ model, params, body }, res, next) => {
       model.update({ id: params.id }, body)
+        .then(body => Array.isArray(body) ? body[0] : body)
         .then(res.json.bind(res))
         .catch(next);
     })
     .delete(({ model, params }, res, next) => {
       model.destroy({ id: params.id })
+        .then(body => Array.isArray(body) ? body[0] : body)
         .then(res.json.bind(res))
         .catch(next);
     });
