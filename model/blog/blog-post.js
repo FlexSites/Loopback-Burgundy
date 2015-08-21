@@ -1,5 +1,5 @@
 export default {
-  identity: 'blog-post',
+  identity: 'post',
   base: 'page-base',
   public: true,
   attributes: {

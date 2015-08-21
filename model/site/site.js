@@ -49,15 +49,13 @@ export default {
     redirects: {
       type: 'array'
     },
-    contact: {
-      email: {
-        type: 'string'
-      },
-      phone: {
-        type: 'string'
-      }
+    contact_email: {
+      type: 'string'
     },
-    testimonial: {
+    contact_phone: {
+      type: 'string'
+    },
+    testimonials: {
       collection: 'testimonial',
       via: 'site'
     },

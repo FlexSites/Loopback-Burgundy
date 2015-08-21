@@ -16,7 +16,7 @@ export default {
   },
   middleware: {
     beforeAccess: passThrough,
-    beforeValidation: passThrough,
+    beforeValidate: passThrough,
   },
   acl: {
     create: 'siteOwner',

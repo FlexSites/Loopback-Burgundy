@@ -1,3 +1,5 @@
+import { set } from 'object-path';
+
 export default {
   identity: 'entertainer',
   base: 'persisted',
@@ -23,6 +25,16 @@ export default {
     },
     media: {
       type: 'array'
+    },
+    siteId: {
+      type: 'string'
+    }
+  },
+  middleware: {
+    beforeAccess: (req, res, next) => {
+      if (!req.user) return next();
+      if (req.flex.site.type === 'entertainer') set(req, 'query.filter.where.website', req.flex.site.host);
+      next();
     }
   }
 };
