@@ -5,6 +5,7 @@ import express from 'express';
 // Initialization
 import initDB from './init/models';
 import { NotFound } from './lib/error';
+import util from './lib/api-util';
 
 // Middlewares
 import { json } from 'body-parser';
@@ -43,6 +44,12 @@ initDB(app)
 
     // Swagger UI
     app.use(DOCS_PATH, swaggerUi({ docs: SWAGGER_PATH }));
+
+    // Cache bust
+    app.get('/sex-panther', function(req, res) {
+      util.clearTemplate(req.hostname);
+      res.send({ message: 'Template for site ' + req.hostname + ' cleared successfully' });
+    });
 
     // Static Proxy
     app.use(staticProxy());
