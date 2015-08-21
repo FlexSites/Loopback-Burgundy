@@ -10,6 +10,7 @@ import { NotFound } from './lib/error';
 import { json } from 'body-parser';
 import swaggerUi from 'swaggerize-ui';
 import stormpathInit from './middleware/stormpath-init';
+import stormpath from 'express-stormpath';
 import wwwRedirect from './middleware/www-redirect';
 
 // Router
@@ -21,9 +22,6 @@ import resourceRouter from './middleware/api/resource-router';
 import magic from './middleware/api/magic';
 import siteInjector from './middleware/site-injector';
 import augmentDocs from './middleware/augment-docs';
-
-// Auth
-import siteRequired from './middleware/stormpath/site-required';
 
 var app = express();
 const DOCS_PATH = '/docs';
@@ -62,7 +60,7 @@ initDB(app)
     // Check that they're in the right group
     app.use((req, res, next) => {
       if (req.flex.site.host !== 'admin.flexsites.io') return next();
-      siteRequired(req, res, next);
+      stormpath.groupsRequired(['Site Owner', 'Admin'], false)(req, res, next);
     });
 
     // API
