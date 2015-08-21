@@ -1,3 +1,8 @@
+'use strict';
+
+import { getYoutubeId } from '../../lib/string-util';
+
+
 export default {
   identity: 'medium',
   base: 'site-owned',
@@ -21,17 +26,22 @@ export default {
     description: {
       type: 'string'
     },
-    embed: function(){
-      if (/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i.test(this.src)) {
-        let id = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i.exec(this.src)[1];
-        return `https://www.youtube.com/embed/${id}`;
-      }
 
+    thumbnail: function() {
+      let id = getYoutubeId(this.src);
+      if (id) return `http://img.youtube.com/vi/${id}/0.jpg`;
+      return this.src;
+    },
+
+    embed: function() {
+      let id = getYoutubeId(this.src);
+      if (id) return `https://www.youtube.com/embed/${id}`;
       return this.src;
     },
 
     toJSON: function() {
       this.embed = this.embed();
+      this.thumbnail = this.thumbnail();
       return this;
     }
   }
