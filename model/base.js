@@ -10,7 +10,9 @@ export default {
     },
 
     toJSON: function() {
-      this.createdAt = this.createdAt();
+      if (typeof this.createdAt === 'function') {
+        this.createdAt = this.createdAt();
+      }
       return this;
     }
   },
