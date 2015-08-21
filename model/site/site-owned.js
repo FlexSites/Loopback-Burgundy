@@ -11,13 +11,27 @@ export default {
       required: true
     }
   },
-  beforeAccess: function(req, res, next) {
-    // If there's a siteId in the request, only show related models
-    let site = req.flex.site;
-    if (!site) return next();
+  middleware: {
+    beforeAccess: function(req, res, next) {
+      // If there's a siteId in the request, only show related models
+      let site = req.flex.site;
+      if (!site) return next();
 
-    objectPath.set(req.query, 'filter.where.site', site.id);
+      objectPath.set(req.query, 'filter.where.site', site.id);
 
-    next();
+      next();
+    },
+    beforeValidate: (req, res, next) => {
+      if (req.body && !req.body.id) {
+        var site = req.flex.site;
+        if (!req.body.site) {
+          if (!site) return next(new Error('Saving object to undefined site'));
+          req.body.site = site.id;
+        }
+      }
+
+      next();
+    }
+
   }
 };

@@ -70,13 +70,15 @@ export default {
       via: 'site'
     }
   },
-  beforeAccess: (req, res, next) => {
-    if (!req.user) return next();
+  middleware: {
+    beforeAccess: (req, res, next) => {
+      if (!req.user) return next();
 
-    let hosts = req.user.groups.items.map(group => group.name);
+      let hosts = req.user.groups.items.map(group => group.name);
 
-    if (!~hosts.indexOf('Admin')) objectPath.set(req, 'query.filter.where.host', hosts);
+      if (!~hosts.indexOf('Admin')) objectPath.set(req, 'query.filter.where.host', hosts);
 
-    next();
+      next();
+    }
   }
 };

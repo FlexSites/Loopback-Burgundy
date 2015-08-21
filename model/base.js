@@ -1,5 +1,7 @@
 'use strict';
 
+let passThrough = (req, res, next) => next();
+
 export default {
   identity: 'base',
   attributes: {
@@ -12,7 +14,10 @@ export default {
       return this;
     }
   },
-  beforeAccess: (req, res, next) => next(),
+  middleware: {
+    beforeAccess: passThrough,
+    beforeValidation: passThrough,
+  },
   acl: {
     create: 'siteOwner',
     read: '$everyone',
@@ -20,3 +25,4 @@ export default {
     delete: 'siteOwner'
   }
 };
+

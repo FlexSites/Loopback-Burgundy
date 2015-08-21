@@ -8,7 +8,8 @@ export default function(app) {
 
   router.route('/')
     .get(readMiddleware)
-    .post(({ model, body }, res, next) => {
+    .post((req, res, next) => req.model.middleware.beforeValidate(req, res, next),
+    ({ model, body }, res, next) => {
       model.create(body)
         .then(res.json.bind(res))
         .catch(next);
@@ -23,7 +24,8 @@ export default function(app) {
 
   router.route('/:id')
     .get(readMiddleware)
-    .put(({ model, params, body }, res, next) => {
+    .put((req, res, next) => req.model.middleware.beforeValidate(req, res, next),
+    ({ model, params, body }, res, next) => {
       model.update({ id: params.id }, body)
         .then(res.json.bind(res))
         .catch(next);

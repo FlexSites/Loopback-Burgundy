@@ -9,7 +9,7 @@ export default function(app) {
 
     let isCount = /count/.test(req.originalUrl);
 
-    req.model.beforeAccess(req, res, () => {
+    req.model.middleware.beforeAccess(req, res, () => {
       if (req.params.id) set(req, 'query.filter.where.id', req.params.id);
       req.model = queryBuilder(req.model, req.query.filter, isCount);
       next();

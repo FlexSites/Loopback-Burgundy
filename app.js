@@ -22,6 +22,9 @@ import magic from './middleware/api/magic';
 import siteInjector from './middleware/site-injector';
 import augmentDocs from './middleware/augment-docs';
 
+// Auth
+import siteRequired from './middleware/stormpath/site-required';
+
 var app = express();
 const DOCS_PATH = '/docs';
 const SWAGGER_PATH = '/api-docs';
@@ -70,7 +73,7 @@ initDB(app)
 
     app.use((err, req, res, next) => {
       console.log('Found err', err.stack);
-      res.send(err);
+      res.status(err.status || 500).send(err);
     });
 
     app.listen(process.env.PORT || 3000, function(){
