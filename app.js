@@ -51,7 +51,16 @@ initDB(app)
     app.use(stormpathInit(app));
 
     app.get('/api/v1/sessions', (req, res, next) => {
-      if (req.user) return res.send([ req.user ]);
+      if (req.user) {
+
+        // Add the isAdmin flag
+        req.user.isAdmin = !!req.user.groups.items.find(function(item){
+          return item.name === 'Admin';
+        });
+
+        return res.send([ req.user ]);
+      }
+
       next(new NotFound('Session not found'));
     });
 
