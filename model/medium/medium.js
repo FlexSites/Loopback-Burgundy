@@ -5,21 +5,34 @@ export default {
   attributes: {
     type: {
       type: 'string',
-      required: true
+      // required: true
     },
     filetype: {
       type: 'string'
     },
     identity: {
       type: 'string',
-      required: true
+      // required: true
     },
     src: {
       type: 'string',
-      required: true
+      // required: true
     },
     description: {
       type: 'string'
+    },
+    embed: function(){
+      if (/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i.test(this.src)) {
+        let id = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i.exec(this.src)[1];
+        return `https://www.youtube.com/embed/${id}`;
+      }
+
+      return this.src;
+    },
+
+    toJSON: function() {
+      this.embed = this.embed();
+      return this;
     }
   }
 };
