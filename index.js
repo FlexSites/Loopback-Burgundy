@@ -1,3 +1,3 @@
-// require('newrelic');
+require('newrelic');
 require('babel/register');
 require('./app');
