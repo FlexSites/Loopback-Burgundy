@@ -1,4 +1,4 @@
-import mixin from 'utils-merge';
+import { merge } from 'lodash';
 import jade from 'jade';
 
 export default function(req, res, next) {
@@ -46,8 +46,8 @@ export default function(req, res, next) {
 
 function render(view, res, options) {
   options = options || {};
-  mixin(options, res.locals);
-  mixin(options, res.app.get('stormpathTemplateContext'));
+  merge(options, res.locals);
+  merge(options, res.app.get('stormpathTemplateContext'));
 
   var renderHandler = res.app.get('stormpathRenderHandler');
 
